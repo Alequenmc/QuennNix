@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuennNix Home</title>
+    <title>QuennNix Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
     <link rel="stylesheet" href="intro.css">
@@ -20,32 +20,28 @@
             <span id="notification-text">Bienvenido Quennix</span>
         </div>
     </div>
-
- 
-
+    
     <main class="min-h-screen flex items-center justify-center p-4">
         <div class="main-container p-8 sm:p-12 rounded-lg w-full max-w-4xl mx-auto text-center relative">
             <div class="mb-12">
                 <h1 class="cyber-title mb-6">QUENNIX</h1>
-<p class="text-blue-300 text-lg mb-4">
-    ¡Bienvenido a <span class="text-neon-purple font-bold">Quennnix</span> 🚀🌌<br><br>
-  
-</p>
-
+                <p class="text-blue-300 text-lg mb-4">
+                    ¡Bienvenido a <span class="text-neon-purple font-bold">Quennnix</span> 🚀🌌<br><br>
+                </p>
+    
                 <div class="flex items-center justify-center mb-2">
                     <div class="status-indicator"></div>
                     <span class="text-green-400">SISTEMA OPERATIVO</span>
                 </div>
             </div>
-
-           
-
+    
             <div class="system-section mt-8">
                 <h2 class="text-2xl text-blue-300 mb-4">Comienza a probar las funciones de QuennNix</h2>
                 <button onclick="iniciarSistema()" class="start-button">
                     INICIAR 
                 </button>
             </div>
+            
             <div class="system-section">
                 <h2 class="text-2xl text-blue-300 mb-4">Estado del Sistema</h2>
                 <div class="stats-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -57,22 +53,38 @@
                         <h3 class="text-blue-400 text-lg">Latencia</h3>
                         <p id="latencia" class="text-green-400 text-2xl font-bold">-- ms</p>
                     </div>
-                    
                 </div>
             </div>
+    
             <div class="system-section mt-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left text-blue-200">
                     <div>
                         <p>Versión: 7.1.5 Alpha</p>
-                        <p>Última actualización: 17 de noviembre </p>
+                        <p>Última actualización: 17 de noviembre</p>
                     </div>
                     <div>
                         <p>Rendimiento: Estable</p>
                     </div>
                 </div>
             </div>
+<div class="bg-[#030014]/80 backdrop-blur-xl p-8 rounded-2xl border border-[#b829ff]/20 neon-border floating relative mt-8">
+    <h2 class="text-2xl text-white font-semibold mb-4">Estado del Sistema</h2>
+    <div class="flex items-center space-x-4 mb-4">
+        <div class="w-3 h-3 bg-[#00fff2] rounded-full animate-pulse"></div>
+        <p class="text-sm text-white">Estado: <span class="text-[#00fff2]">Online</span></p>
+    </div>
+    <div class="text-white text-sm leading-relaxed mb-4">
+        Actualmente, estamos realizando una transición de tecnologías, pasando de HTML a PHP, React y otras herramientas avanzadas para mejorar la funcionalidad y la experiencia de usuario.
+        <span class="text-[#00fff2] font-medium">
+            Estas actualizaciones incluirán nuevas características que optimizarán el rendimiento y la interacción en el futuro.
+        </span>
+        ¡Gracias por tu paciencia mientras preparamos todo para ti! 💻✨
+    </div>
+</div>
+
         </div>
     </main>
+    
 
     <script>
         let notificationQueue = [];
