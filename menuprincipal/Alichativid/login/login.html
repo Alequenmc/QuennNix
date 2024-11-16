@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennVix Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+    
+        
+        .neon-text {
+            text-shadow: 0 0 5px #b829ff,
+                        0 0 10px #29b6ff,
+                        0 0 15px #00fff2;
+        }
+        
+        .cyber-bg {
+            background: linear-gradient(45deg, #030014, #090027, #030014);
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .matrix-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+   
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .scroll-area {
+  overflow-y: auto;
+  max-height: 300px;
+}
+.scroll-area {
+  overflow-y: auto; 
+  max-height: 300px;
+}
+
+
+    </style>
+</head>
+<body class="cyber-bg min-h-screen text-gray-200 antialiased matrix-bg">
+    <!-- Cyber Grid Background -->
+    <div class="overflow-y-auto max-h-screen">
+        <div class="fixed inset-0 z-0">
+            <svg width="100%" height="100%" xmlns="img">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b829ff" stroke-width="0.5" opacity="0.2"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div id="notification-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+        <div class="min-h-screen flex items-center justify-center p-4 relative z-10">
+            <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- panel del lado -->
+                <div class="bg-[#030014]/80 backdrop-blur-xl p-8 rounded-2xl border border-[#b829ff]/20 neon-border floating">
+                    <!-- aca esta el logo-->
+                    <div class="text-center mb-8">
+                        <div class="inline-block mb-4 relative hexagon bg-gradient-to-r from-[#b829ff] via-[#29b6ff] to-[#00fff2] p-1">
+                            <div class="bg-[#030014] p-4 hexagon">
+                                <img src="img/Quennix.png" alt="Logo" class="w-16 h-16 object-cover rounded-full" />
+                            </div>
+                        </div>
+                        
+                        
+                        <h1 class="text-4xl font-light tracking-wider neon-text bg-clip-text text-transparent bg-gradient-to-r from-[#b829ff] via-[#29b6ff] to-[#00fff2]">
+                            Login 
+                        </h1>
+                        <p class="text-sm text-gray-400 mt-2">Bienvenido a QuennVix</p>
+                    </div>
+
+                    <!-- los tabs-->
+                    <div class="flex mb-6 border-b border-[#b829ff]/20">
+                        <button onclick="switchTab('login')" class="tab-btn px-6 py-3 text-sm focus:outline-none border-b-2 border-[#29b6ff] transition-all">Login</button>
+                        <button onclick="switchTab('register')" class="tab-btn px-6 py-3 text-sm focus:outline-none border-b-2 border-transparent transition-all">Register</button>
+                        <button onclick="switchTab('recovery')" class="tab-btn px-6 py-3 text-sm focus:outline-none border-b-2 border-transparent transition-all">Recovery</button>
+                    </div>
+
+                    <!-- contendio de login -->
+                    <div id="login" class="tab-content space-y-6 active animate-fade-in">
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">User </label>
+                            <input type="email" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="user@access.com">
+                        </div>
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">Password</label>
+                            <input type="password" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="••••••••">
+                        </div>
+                        <button 
+                        class="w-full bg-gradient-to-r from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border border-[#b829ff]/20 text-[#00fff2] rounded-lg py-3 hover:from-[#b829ff]/20 hover:via-[#29b6ff]/20 hover:to-[#00fff2]/20 transition-all duration-300 neon-border"
+                        onclick="location.href='../chat/Menuchat.html'">
+                        Ingresar
+                    </button>
+                    
+                    </div>
+                    <div id="register" class="tab-content hidden space-y-6 animate-fade-in">
+                        <!-- Campos para Registrarse -->
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">Nombre de Usuario</label>
+                            <input type="text" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="TuNombre">
+                        </div>
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">Correo Electrónico</label>
+                            <input type="email" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="usuario@correo.com">
+                        </div>
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">Contraseña</label>
+                            <input type="password" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="••••••••">
+                        </div>
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">Confirmar Contraseña</label>
+                            <input type="password" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="••••••••">
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border border-[#b829ff]/20 text-[#00fff2] rounded-lg py-3 hover:from-[#b829ff]/20 hover:via-[#29b6ff]/20 hover:to-[#00fff2]/20 transition-all duration-300 neon-border">
+                            REGISTRARSE
+                        </button>
+                    </div>
+                    
+                    <div id="recovery" class="tab-content hidden space-y-6 animate-fade-in">
+                        <!--  Recuperar Contraseña -->
+                        <div class="input-group">
+                            <label class="text-xs text-[#00fff2] mb-1 block">Correo Electrónico</label>
+                            <input type="email" class="w-full bg-black/40 border border-[#b829ff]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#29b6ff] focus:ring focus:ring-[#29b6ff]/50 transition-all placeholder-animate" placeholder="usuario@correo.com">
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border border-[#b829ff]/20 text-[#00fff2] rounded-lg py-3 hover:from-[#b829ff]/20 hover:via-[#29b6ff]/20 hover:to-[#00fff2]/20 transition-all duration-300 neon-border">
+                            RECUPERAR CONTRASEÑA
+                        </button>
+                        <p class="text-sm text-gray-400 text-center mt-2">
+                            Te enviaremos un enlace a tu correo para restablecer tu contraseña.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                
+                <div class="bg-[#030014]/80 backdrop-blur-xl p-8 rounded-2xl border border-[#b829ff]/20 neon-border floating relative">
+                    <h2 class="text-2xl text-[#00fff2] font-semibold mb-4">Estado del Sistema</h2>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-3 h-3 bg-[#00fff2] rounded-full animate-pulse"></div>
+                        <p class="text-sm text-[#b829ff]">Estado: <span class="text-[#00fff2]">Online</span></p>
+                    </div>
+                    <div class="text-[#b829ff] text-sm leading-relaxed mb-4">
+                        Actualmente, estamos trabajando en la funcionalidad de registro. Por ahora, no será posible registrar nuevos datos. 
+                        <span class="text-[#00fff2] font-medium">
+                            No se guardará ninguna información ingresada.
+                        </span>
+                        ¡Agradecemos tu paciencia mientras preparamos todo para ti! 💻✨
+                    </div>
+                    <button 
+                        class="w-full bg-gradient-to-r from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border border-[#b829ff]/20 text-[#00fff2] rounded-lg py-3 hover:from-[#b829ff]/20 hover:via-[#29b6ff]/20 hover:to-[#00fff2]/20 transition-all duration-300 neon-border"
+                        onclick="showAlert()">
+                        Leer mas
+                    </button>
+                </div>
+                
+                <!-- Alerta, aca se añadira dinamicamente mas alertas y mas cosas oero en el futuro-->
+                <div id="alertModal" class="hidden fixed inset-0 bg-[#030014]/90 backdrop-blur-md flex items-center justify-center z-50">
+                    <div class="bg-[#030014] p-6 rounded-xl border border-[#b829ff]/30 neon-border">
+                        <h3 class="text-lg text-[#00fff2] font-semibold mb-3">🔔 Aviso Importante</h3>
+                        <p class="text-sm text-[#b829ff] mb-4">
+                            La funcionalidad de registro aún está en desarrollo. Por ahora, puedes explorar la plataforma, pero no podrás registrar datos personales.
+                            <span class="block mt-2 text-[#00fff2] font-medium">
+                                Gracias por tu comprensión. 😊
+                            </span>
+                        </p>
+                        <button 
+                            class="w-full bg-gradient-to-r from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border border-[#b829ff]/20 text-[#00fff2] rounded-lg py-3 hover:from-[#b829ff]/20 hover:via-[#29b6ff]/20 hover:to-[#00fff2]/20 transition-all duration-300 neon-border"
+                            onclick="closeAlert()">
+                            Entendido
+                        </button>
+                    </div>
+                </div>
+                
+               
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="login.js"></script>
+ <!-- Script -->
+ <script>
+    function showAlert() {
+        document.getElementById('alertModal').classList.remove('hidden');
+    }
+
+    function closeAlert() {
+        document.getElementById('alertModal').classList.add('hidden');
+    }
+</script>
+    
+</body>
+</html>

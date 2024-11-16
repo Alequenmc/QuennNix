@@ -1,0 +1,203 @@
+:root {
+    --neon-purple: #b026ff;
+    --neon-blue: #0088ff;
+    --neon-cyan: #00fff2;
+}
+
+body {
+    background: #030014;
+    overflow-x: hidden;
+}
+
+.cyber-background {
+    background: 
+        radial-gradient(circle at 50% 50%, rgba(26, 0, 55, 0.8), transparent 60%),
+        linear-gradient(135deg, #030014 0%, #1a0037 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.grid-background {
+    background-image: 
+        linear-gradient(rgba(26, 0, 55, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 0, 55, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(20px); }
+}
+
+.cyber-title {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 
+        0 0 10px rgba(176, 38, 255, 0.5),
+        0 0 20px rgba(0, 136, 255, 0.3);
+    position: relative;
+}
+
+.start-button {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+    color: white;
+    padding: 1.5rem 3rem;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 0 15px rgba(176, 38, 255, 0.5),
+        0 0 30px rgba(0, 136, 255, 0.3);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 15px rgba(176, 38, 255, 0.5), 0 0 30px rgba(0, 136, 255, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(176, 38, 255, 0.7), 0 0 40px rgba(0, 136, 255, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(176, 38, 255, 0.5), 0 0 30px rgba(0, 136, 255, 0.3); }
+}
+
+.start-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 30px rgba(176, 38, 255, 0.8);
+}
+
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: rgba(0, 0, 0, 0.8);
+    border-left: 4px solid var(--neon-purple);
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    z-index: 1000;
+    transition: right 0.5s ease;
+    backdrop-filter: blur(10px);
+    max-width: 300px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    background: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+.system-section {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(176, 38, 255, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+   
+}
+
+.system-section:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(176, 38, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-blue);
+}
+
+.menu-panel {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-item {
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(176, 38, 255, 0.2);
+}
+
+@media (max-width: 640px) {
+    .cyber-title {
+        font-size: 2.5rem;
+    }
+    
+    .start-button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-panel {
+        display: none;
+    }
+}

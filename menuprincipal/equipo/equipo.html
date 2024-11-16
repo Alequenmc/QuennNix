@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro equipo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #9d00ff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+        }
+
+        .cyber-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            animation: scan-line 2s linear infinite;
+        }
+
+        @keyframes scan-line {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+
+        .team-card {
+            background: rgba(16, 16, 28, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            z-index: -1;
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-card:hover::before {
+            opacity: 1;
+        }
+
+        .tech-badge {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--neon-blue);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .glitch-effect {
+            animation: glitch 1s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
+        }
+
+        .image-hover {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(0, 243, 255, 0.2) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .team-card:hover .image-hover::after {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body>
+    <section id="equipo" class="py-20 cyber-container min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 glitch-effect" style="color: var(--neon-blue)">
+                    Equipo QuinnNix
+                </h2>
+               
+            </div><!--
+                Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                El uso, distribución o modificación no autorizada de este código está prohibido.
+              -->
+              
+              <!--
+                Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+              -->
+              
+              <!--
+                Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+              -->
+              
+              <!--
+                Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+              -->
+              
+              <!--
+                Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+              -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Jhoan Mejia -->
+                <div class="team-card group transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="image-hover">
+                        <img src="imagenes/e443c1ca-9e25-4044-a1ed-8a752eabddae.jpg" 
+                             alt="Jhoan Mejia" 
+                             class="w-full h-64 object-cover rounded-t-lg"/>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--neon-blue)">Jhoan Mejia</h3>
+                        <p class="text-gray-400 mb-4">Desarrollador Frontend</p>
+                       
+                    </div>
+                </div><!--
+                    Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                    El uso, distribución o modificación no autorizada de este código está prohibido.
+                  -->
+                  
+                  <!--
+                    Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                  -->
+                  
+                  <!--
+                    Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                  -->
+                  
+                  <!--
+                    Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                  -->
+                  
+                  <!--
+                    Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                  -->
+
+                <!-- Jeremias Castro -->
+                <div class="team-card group transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="image-hover">
+                        <img src="imagenes/814c7216-4318-4a09-a4d7-dc6f45b6dd43.jpg" 
+                             alt="Jeremias Castro" 
+                             class="w-full h-64 object-cover rounded-t-lg"/>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--neon-blue)">Jeremias Castro</h3>
+                        <p class="text-gray-400 mb-4">Desarrollador Frontend</p>
+                       
+                    </div>
+                </div>
+<!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+                <!-- Vivi Zapata -->
+                <div class="team-card group transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="image-hover">
+                        <img src="imagenes/6529b1cc-133f-4443-8d82-491516bb7a7d.jpg" 
+                             alt="Vivi Zapata" 
+                             class="w-full h-64 object-cover rounded-t-lg"/>
+                    </div><!--
+                        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                        El uso, distribución o modificación no autorizada de este código está prohibido.
+                      -->
+                      
+                      <!--
+                        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                      -->
+                      
+                      <!--
+                        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                      -->
+                      
+                      <!--
+                        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                      -->
+                      
+                      <!--
+                        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                      -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--neon-blue)">Vivi Zapata</h3>
+                        <p class="text-gray-400 mb-4">Desarrolladora Frontend</p>
+                       
+                    </div>
+                </div>
+<!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+                <!-- Elver Alex -->
+                <div class="team-card group transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="image-hover">
+                        <img src="imagenes/usuario.png" 
+                             alt="Elver Alex" 
+                             class="w-full h-64 object-cover rounded-t-lg"/>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--neon-blue)">Elver Alex</h3>
+                        <p class="text-gray-400 mb-4">Desarrollador Frontend</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-badge px-3 py-1 rounded-full text-sm">Ceo</span>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--
+            Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+            El uso, distribución o modificación no autorizada de este código está prohibido.
+          -->
+          
+          <!--
+            Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+          -->
+          
+          <!--
+            Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+          -->
+          
+          <!--
+            Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+          -->
+          
+          <!--
+            Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+          -->
+    </section>
+
+    <script>
+        // Animación de entrada con GSAP
+        gsap.from('.team-card', {
+            duration: 1,
+            y: 100,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out'
+        });
+
+        // Efecto de hover más suave
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                gsap.to(card, {
+                    duration: 0.5,
+                    rotateX: (y - rect.height / 2) / 20,
+                    rotateY: (x - rect.width / 2) / 20,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    duration: 0.5,
+                    rotateX: 0,
+                    rotateY: 0,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

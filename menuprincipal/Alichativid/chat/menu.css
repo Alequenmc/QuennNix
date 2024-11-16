@@ -1,0 +1,136 @@
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0e024400; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1900ff; 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4299e1; 
+}
+
+
+
+   :root {
+    --light: #d8dde4; 
+    --dark: hsl(250, 80%, 6%); 
+    --darker: #0a1420; 
+    --indigo-dark: #313a7c; 
+    --indigo-light: #4c59b2; 
+    --gray-light: #b0b6c2;
+}
+
+.dark .dark\:text-light {
+    color: var(--light);
+}
+
+.dark .dark\:bg-dark {
+    background-color: var(--dark);
+}
+
+.dark .dark\:bg-darker {
+    background-color: var(--darker);
+}
+
+.dark .dark\:text-gray-300 {
+    color: var(--gray-light); 
+}
+
+.dark .dark\:text-indigo-700 {
+    color: var(--indigo-dark); 
+}
+
+.dark .dark\:text-indigo-500 {
+    color: var(--indigo-light); 
+}
+
+.dark .dark\:text-indigo-100 {
+    color: #c4c9e2;
+}
+
+.dark .dark\:hover\:text-light:hover {
+    color: var(--light);
+}
+
+.dark .dark\:border-indigo-800 {
+    border-color: #2a3268; 
+}
+
+.dark .dark\:border-indigo-700 {
+    border-color: var(--indigo-dark);
+}
+
+.dark .dark\:bg-indigo-600 {
+    background-color: var(--indigo-dark);
+}
+
+.dark .dark\:hover\:bg-indigo-600:hover {
+    background-color: var(--indigo-dark);
+}
+
+.dark .dark\:border-indigo-500 {
+    border-color: var(--indigo-light);
+}
+
+.dark .group:hover .dark\:group-hover\:text-indigo-400 {
+    color: #5964a9; 
+}
+
+.hover\:overflow-y-auto:hover {
+    overflow-y: auto;
+}
+.alert-popup {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .alert-popup.active {
+    opacity: 1;
+  }
+
+
+  @keyframes neonPulse {
+    0%, 100% { text-shadow: 0 0 1px #ff00de, 0 0 2px #ff00de; } 
+    50% { text-shadow: 0 0 1px #00ffff, 0 0 2px #00ffff; } 
+}
+
+.neon-text {
+    animation: neonPulse 3s infinite;
+}
+
+.neon-border {
+    box-shadow: 0 0 1px #00ffff; 
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+.glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(17, 24, 39, 0.7);
+}
+.vip-glow {
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.5);
+}
+.menu-transition {
+    transition: all 0.3s ease;
+}
+
+
+
+

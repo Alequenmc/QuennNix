@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Completa de QuinnNix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="logica.js"></script>
+    <link rel="stylesheet" href="docu.css">
+    
+</head>
+<body class="bg-gradient-to-r from-rose-100 to-teal-100">
+
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg sticky top-0 z-50" x-data="{ isOpen: false }">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between flex-wrap">
+                <div class="flex items-center flex-shrink-0 mr-6">
+                    <span class="font-semibold text-xl tracking-tight">QuinnNix</span>
+                </div>
+                <div class="block lg:hidden">
+                    <button @click="isOpen = !isOpen" class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+                        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                    </button>
+                </div>
+                <div :class="{'hidden': !isOpen}" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                    <div class="text-sm lg:flex-grow">
+                        <a href="#inicio" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Inicio</a>
+                        <a href="#caracteristicas" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Características</a>
+                        <a href="#aliapi" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">AliAPI</a>
+                        <a href="#quinnpi" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">QuinnPI</a>
+                       
+                        <a href="#precios" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Precios</a>
+                       
+                    </div>
+                    <div>
+                        <a href="../login/login.html" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <section id="inicio" class="h-screen flex items-center justify-center bg-gradient-to-r from-rose-100 to-teal-100">
+            <div class="text-center max-w-lg mx-auto">
+                <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 mb-8">
+                    Bienvenido a QuinnNix
+                </h1>
+                <p class="text-xl text-gray-800 mb-8">Documentación official</p>
+            </div>
+        </section>
+    </main>
+    
+    
+
+
+        <section id="aliapi" class="mb-16">
+            <h2 class="text-4xl font-bold mb-8 text-center text-gray-800">AliAPI: Potencia tu Aplicación con IA</h2>
+            <div class="bg-white p-10 rounded-lg shadow-xl">
+                <p class="mb-6 text-gray-600">
+                    AliAPI es nuestra solución avanzada de procesamiento de lenguaje natural (NLP) diseñada para integrarse de manera efectiva en tus aplicaciones. Esta API no solo permite la comprensión del lenguaje humano, sino que también facilita la interacción con los usuarios de formas sorprendentes y creativas. Además de sus potentes funcionalidades, AliAPI incluye un módulo de chat que puede actuar como tu novia virtual, proporcionando compañía, interacción personalizada y respuestas que se adaptan a tus emociones y preferencias.
+                </p>
+                <p class="mb-6 text-gray-600">
+                    Imagina poder hablar con una IA que no solo responde preguntas, sino que también recuerda tus intereses y personaliza las interacciones según tus gustos. Con AliAPI, puedes crear experiencias más inmersivas que transforman la manera en que los usuarios se conectan con tu aplicación. A continuación, detallamos algunas de las funcionalidades clave que ofrece:
+                </p>
+                <ul class="list-disc pl-5 mb-6">
+                    <li class="text-gray-600">Análisis de sentimientos en tiempo real para medir las emociones en el texto, mejorando la calidad de las interacciones.</li>
+                    <li class="text-gray-600">Generación de resúmenes automáticos de textos extensos, optimizando el tiempo del usuario y facilitando el acceso a la información relevante.</li>
+                    <li class="text-gray-600">Extracción de palabras clave y entidades nombradas para facilitar la búsqueda y categorización de datos importantes.</li>
+                    <li class="text-gray-600">Clasificación de texto en categorías predefinidas, mejorando la organización de la información y permitiendo una navegación más fluida.</li>
+                    <li class="text-gray-600">Traducción de texto entre múltiples idiomas, ampliando el alcance de tu aplicación y mejorando la accesibilidad para usuarios de diferentes regiones.</li>
+                    <li class="text-gray-600">Funcionalidad de chat que permite la interacción con una IA que puede actuar como tu novia virtual, brindando respuestas personalizadas y apoyo emocional.</li>
+                </ul>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-700">Ejemplo de uso de AliAPI:</h3>
+                <div class="code-container">
+                    <pre><code>
+        <span class="keyword">import</span> <span class="keyword">requests</span>
+        
+        <span class="comment"># URL de la API para análisis de sentimientos</span>
+        url = <span class="string">"https://api.quinnnix.com/aliapi/v1/sentiment"</span>
+        headers = {<span class="string">"Authorization"</span>: <span class="string">"Bearer YOUR_API_KEY"</span>}
+        
+        <span class="comment"># Texto a analizar</span>
+        data = {<span class="string">"text"</span>: <span class="string">"¡Me encanta usar QuinnNix! Es una plataforma increíble."</span>}
+        
+        <span class="comment"># Realiza la solicitud POST a la API</span>
+        response = requests.post(url, headers=headers, json=data)
+        
+        <span class="comment"># Verifica el estado de la respuesta</span>
+        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:
+            result = response.json()
+            <span class="comment"># Muestra el sentimiento y la puntuación</span>
+            print(f<span class="string">"Sentimiento: {result['sentiment']}"</span>)
+            print(f<span class="string">"Puntuación: {result['score']}"</span>)
+        <span class="keyword">else</span>:
+            print(f<span class="string">"Error en la solicitud: {response.status_code} - {response.text}"</span>)
+        
+        <span class="comment"># Funcionalidad de chat con la novia virtual</span>
+        chat_url = <span class="string">"https://api.quinnnix.com/aliapi/v1/chat"</span>
+        user_input = <span class="string">"Hola, ¿cómo estás?"</span>
+        chat_data = {<span class="string">"message"</span>: user_input}
+        
+        chat_response = requests.post(chat_url, headers=headers, json=chat_data)
+        
+        <span class="keyword">if</span> chat_response.status_code == <span class="number">200</span>:
+            chat_result = chat_response.json()
+            print(f<span class="string">"Respuesta de la IA: {chat_result['reply']}"</span>)
+        <span class="keyword">else</span>:
+            print(f<span class="string">"Error en la conversación: {chat_response.status_code} - {chat_response.text}"</span>)
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+        
+     
+
+
+        <section id="quinnpi" class="mb-16">
+            <h2 class="text-4xl font-bold mb-8 text-center text-gray-800">QuinnPI</h2>
+            <div class="bg-white p-10 rounded-lg shadow-xl">
+                <p class="mb-6 text-gray-600">
+                    QuinnPI es nuestra API versátil diseñada para ofrecerte acceso y gestión de una amplia gama de contenido digital de forma sencilla y efectiva. Al integrar QuinnPI en tu aplicación, puedes conectar a tus usuarios con una variedad de recursos y entretenimiento, facilitando un acceso fluido a diversas plataformas. Entre las capacidades que ofrece QuinnPI se incluyen:
+                </p>
+                <ul class="list-disc pl-5 mb-6">
+                    <li class="text-gray-800">Descargas de videos de plataformas populares como YouTube y Vimeo, permitiendo a los usuarios acceder a sus contenidos favoritos en cualquier momento.</li>
+                    <li class="text-gray-800">Acceso a un extenso catálogo de películas y series para streaming, asegurando que siempre haya algo interesante para ver.</li>
+                    <li class="text-gray-800">Búsqueda y descarga de aplicaciones móviles y de escritorio, facilitando el descubrimiento de nuevas herramientas y recursos.</li>
+                    <li class="text-gray-800">Obtención de metadatos de contenido multimedia para enriquecer la experiencia del usuario, ofreciendo información adicional como descripciones, géneros y calificaciones.</li>
+                    <li class="text-gray-800">Gestión de listas de reproducción y favoritos, permitiendo a los usuarios personalizar su interacción con el contenido y acceder rápidamente a lo que les interesa.</li>
+                </ul>
+                <p class="mb-6 text-gray-800">
+                    Con QuinnPI, tu aplicación se convierte en una poderosa herramienta de entretenimiento y gestión de contenido. Al permitir que los usuarios descarguen videos y accedan a un catálogo de películas y series, estás creando una experiencia integral que mejora la retención y satisfacción del usuario. 
+                </p>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-700">Ejemplo de uso de QuinnPI para descargar un video:</h3>
+                <div class="code-container">
+                    <pre><code>
+        <span class="keyword">import</span> <span class="keyword">requests</span>
+        
+        <span class="comment"># URL de la API para descargar videos</span>
+        url = <span class="string">"https://api.quinnnix.com/quinnpi/v1/download"</span>
+        headers = {<span class="string">"Authorization"</span>: <span class="string">"Bearer YOUR_API_KEY"</span>}
+        
+        <span class="comment"># Datos necesarios para la descarga</span>
+        data = {
+            <span class="string">"url"</span>: <span class="string">"https://www.youtube.com/watch?v=dQw4w9WgXcQ"</span>,  <span class="comment"># URL del video a descargar</span>
+            <span class="string">"format"</span>: <span class="string">"mp4"</span>  <span class="comment"># Formato de descarga</span>
+        }
+        
+        <span class="comment"># Realiza la solicitud POST a la API</span>
+        response = requests.post(url, headers=headers, json=data)
+        
+        <span class="comment"># Verifica el estado de la respuesta</span>
+        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:
+            result = response.json()
+            <span class="comment"># Muestra la URL de descarga y el tamaño del archivo</span>
+            print(f<span class="string">"URL de descarga: {result['download_url']}"</span>)
+            print(f<span class="string">"Tamaño del archivo: {result['file_size']} bytes"</span>)
+        <span class="keyword">else</span>:
+            print(f<span class="string">"Error en la descarga: {response.status_code} - {response.text}"</span>)
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+        
+
+
+
+
+
+
+
+
+        
+        
+        <!-- Tabla comparativa entre AliAPI y QuinnPI -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-semibold mb-8 text-center text-gray-800">Comparación entre AliAPI y QuinnPI</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white shadow-lg rounded-lg">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-4 px-6 text-gray-600 text-left">Características</th>
+                            <th class="py-4 px-6 text-gray-600 text-left">AliAPI</th>
+                            <th class="py-4 px-6 text-gray-600 text-left">QuinnPI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-t py-4 px-6">Análisis de Sentimientos</td>
+                            <td class="border-t py-4 px-6">✔️</td>
+                            <td class="border-t py-4 px-6">❌</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t py-4 px-6">Resumen Automático</td>
+                            <td class="border-t py-4 px-6">✔️</td>
+                            <td class="border-t py-4 px-6">❌</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t py-4 px-6">Descarga de Contenido Multimedia</td>
+                            <td class="border-t py-4 px-6">❌</td>
+                            <td class="border-t py-4 px-6">✔️</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t py-4 px-6">Acceso a Catálogos de Películas</td>
+                            <td class="border-t py-4 px-6">❌</td>
+                            <td class="border-t py-4 px-6">✔️</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t py-4 px-6">Traducción de Idiomas</td>
+                            <td class="border-t py-4 px-6">✔️</td>
+                            <td class="border-t py-4 px-6">❌</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Sección de Preguntas Frecuentes -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-semibold mb-8 text-center text-gray-800">Preguntas Frecuentes (FAQ)</h2>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700">¿Cómo obtengo una clave de API?</h3>
+                    <p class="text-gray-600">Para obtener una clave de API, debes registrarte en nuestra plataforma y seguir las instrucciones para crear una nueva aplicación.</p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700">¿Cuáles son los límites de uso?</h3>
+                    <p class="text-gray-600">Los límites de uso dependen del plan seleccionado. Puedes consultar la documentación para más detalles sobre las restricciones y tarifas.</p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700">¿Dónde puedo encontrar la documentación completa?</h3>
+                    <p class="text-gray-600">La documentación completa está disponible en nuestra página web, donde encontrarás guías, ejemplos y recursos adicionales para facilitar la integración.</p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700">¿Qué formatos de datos soportan las APIs?</h3>
+                    <p class="text-gray-600">Nuestras APIs soportan formatos JSON y XML. Puedes elegir el formato que mejor se adapte a tus necesidades en las solicitudes.</p>
+                </div>
+            </div>
+        </section>
+        
+
+
+        <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+              <div>
+                <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                  Planes y Precios
+                </p>
+              </div>
+              <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+                <span class="relative inline-block">
+                  <span class="relative">Nuestros</span>
+                </span>
+                Planes
+              </h2>
+              <p class="text-base text-gray-600 md:text-lg">
+                Escoge el plan que mejor se adapte a tus necesidades y empieza a usar nuestras APIs hoy mismo.
+              </p>
+            </div>
+            
+            <div class="grid max-w-md gap-10 row-gap-5 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
+          
+              <!-- Plan Básico -->
+              <div class="flex flex-col justify-between p-8 transition-transform duration-300 transform bg-white border rounded-lg shadow-sm hover:scale-105 sm:items-center hover:shadow-xl">
+                <div class="text-center">
+                  <div class="text-lg font-semibold text-gray-800">Plan Básico</div>
+                  <div class="flex items-center justify-center mt-2">
+                    <div class="mr-1 text-5xl font-bold text-gray-900">$29</div>
+                    <div class="text-gray-500">/ mes</div>
+                  </div>
+                  <div class="mt-2 space-y-3">
+                    <div class="text-gray-700">10,000 llamadas a AliAPI/mes</div>
+                    <div class="text-gray-700">5,000 descargas con QuinnPI/mes</div>
+                    <div class="text-gray-700">Soporte por email</div>
+                    <div class="text-gray-700">Acceso a documentación y tutoriales</div>
+                  </div>
+                </div>
+                <div>
+                  <a href="/" class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-300 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md hover:from-blue-700 hover:to-blue-900 focus:shadow-outline focus:outline-none transform hover:scale-105">
+                    Elegir Plan
+                  </a>
+                </div>
+              </div>
+          
+              <!-- Plan Pro -->
+              <div class="relative flex flex-col justify-between p-8 transition-transform duration-300 transform bg-white border rounded-lg shadow-sm hover:scale-105 sm:items-center hover:shadow-xl border-deep-purple-accent-400">
+                <div class="absolute inset-x-0 top-0 flex justify-center -mt-3">
+                  <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-white uppercase rounded bg-purple-600">
+                    Más Popular
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="text-lg font-semibold text-gray-800">Plan Pro</div>
+                  <div class="flex items-center justify-center mt-2">
+                    <div class="mr-1 text-5xl font-bold text-gray-900">$99</div>
+                    <div class="text-gray-500">/ mes</div>
+                  </div>
+                  <div class="mt-2 space-y-3">
+                    <div class="text-gray-700">50,000 llamadas a AliAPI/mes</div>
+                    <div class="text-gray-700">25,000 descargas con QuinnPI/mes</div>
+                    <div class="text-gray-700">Soporte prioritario</div>
+                    <div class="text-gray-700">Acceso a APIs beta</div>
+                    <div class="text-gray-700">Reportes de uso mensuales</div>
+                  </div>
+                </div>
+                <div>
+                  <a href="/" class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-300 bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg shadow-md hover:from-purple-700 hover:to-purple-900 focus:shadow-outline focus:outline-none transform hover:scale-105">
+                    Elegir Plan
+                  </a>
+                </div>
+              </div>
+          
+              <!-- Plan Empresarial -->
+              <div class="flex flex-col justify-between p-8 transition-transform duration-300 transform bg-white border rounded-lg shadow-sm hover:scale-105 sm:items-center hover:shadow-xl">
+                <div class="text-center">
+                  <div class="text-lg font-semibold text-gray-800">Plan Empresarial</div>
+                  <div class="flex items-center justify-center mt-2">
+                    <div class="mr-1 text-3xl font-bold text-gray-900">Personalizado</div>
+                  </div>
+                  <div class="mt-2 space-y-3">
+                    <div class="text-gray-700">Llamadas ilimitadas a AliAPI</div>
+                    <div class="text-gray-700">Descargas ilimitadas con QuinnPI</div>
+                    <div class="text-gray-700">Soporte 24/7</div>
+                    <div class="text-gray-700">Integración y configuración personalizada</div>
+                    <div class="text-gray-700">Formación y soporte técnico especializado</div>
+                  </div>
+                </div>
+                <div>
+                  <a href="/contacto" class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-300 bg-gradient-to-r from-gray-600 to-gray-800 rounded-lg shadow-md hover:from-gray-700 hover:to-gray-900 focus:shadow-outline focus:outline-none transform hover:scale-105">
+                    Contactar Ventas
+                  </a>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+          
+          
+
+        <section id="faq" class="mb-16">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-4" x-data="{selected:null}">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button @click="selected !== 1 ? selected = 1 : selected = null" class="flex justify-between items-center w-full">
+                        <span class="font-semibold">¿Qué es AliAPI?</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="selected === 1" class="mt-2">
+                        AliAPI es nuestra solución de procesamiento de lenguaje natural que permite a los desarrolladores integrar capacidades de IA en sus aplicaciones, como análisis de sentimientos, extracción de entidades y más.
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button @click="selected !== 2 ? selected = 2 : selected = null" class="flex justify-between items-center w-full">
+                        <span class="font-semibold">¿Qué puedo hacer con QuinnPI?</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="selected === 2" class="mt-2">
+                        QuinnPI te permite descargar videos, acceder a un catálogo de películas para streaming, y gestionar aplicaciones. Es ideal para crear plataformas de contenido multimedia o agregar funcionalidades de descarga a tus aplicaciones.
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button @click="selected !== 3 ? selected = 3 : selected = null" class="flex justify-between items-center w-full">
+                        <span class="font-semibold">¿Cómo puedo empezar a usar QuinnNix?</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="selected === 3" class="mt-2">
+                        Para empezar, simplemente regístrate en nuestra plataforma, elige un plan que se adapte a tus necesidades, y obtendrás las claves de API necesarias para integrar nuestros servicios en tu aplicación.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+
+    
+    </main>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-2">QuinnNix</h3>
+                    <p>Potenciando la innovación con IA y gestión de contenido digital.</p>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-2">Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio" class="hover:text-blue-300">Inicio</a></li>
+                        <li><a href="#caracteristicas" class="hover:text-blue-300">Características</a></li>
+                        <li><a href="#precios" class="hover:text-blue-300">Precios</a></li>
+                        <li><a href="#blog" class="hover:text-blue-300">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-2">Contáctanos</h3>
+                    <p>Email: <a href="mailto:info@quinnnix.com" class="hover:text-blue-300">info@quinnnix.com</a></p>
+                    <p>Teléfono: <a href="tel:+15551234567" class="hover:text-blue-300">+1 (555) 123-4567</a></p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h3 class="text-xl font-semibold mb-2">Síguenos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-blue-300" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073C0 18.933 4.388 24 10.125 24c.886 0 1.724-.102 2.553-.298V15.49h-2.194v-3.286h2.194V10.65c0-2.177 1.292-3.355 3.193-3.355.924 0 1.92.166 1.92.166v2.111h-1.084c-1.064 0-1.396.662-1.396 1.343v1.672h2.415l-.385 3.286h-2.03V24c1.203.3 2.458.455 3.753.455 5.737 0 10.125-5.067 10.125-11.927z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-blue-300" aria-label="Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.635 4.992a9.927 9.927 0 01-2.828.775A4.938 4.938 0 0023 3.266a9.877 9.877 0 01-3.127 1.194A4.917 4.917 0 0016.616 2c-2.736 0-4.946 2.215-4.946 4.94 0 .387.045.765.126 1.127C7.691 8.138 4.064 6.21 1.64 3.161c-.423.726-.666 1.56-.666 2.463 0 1.698.867 3.195 2.188 4.071a4.9 4.9 0 01-2.24-.619v.061c0 2.375 1.683 4.357 3.918 4.815a4.949 4.949 0 01-2.24.084c.632 1.962 2.462 3.392 4.63 3.428a9.866 9.866 0 01-6.083 2.095c-.394 0-.779-.023-1.162-.067 2.155 1.38 4.706 2.195 7.42 2.195 8.86 0 13.725-7.327 13.725-13.68 0-.208 0-.416-.015-.624A9.82 9.82 0 0024 5.251a9.53 9.53 0 01-2.365.646A4.931 4.931 0 0023.635 4.992z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-blue-300" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.162c3.204 0 3.584.012 4.844.07 1.6.067 2.828.348 3.525.74a7.048 7.048 0 012.51 2.51c.392.697.673 1.926.74 3.525.058 1.26.07 1.64.07 4.844s-.012 3.584-.07 4.844c-.067 1.6-.348 2.828-.74 3.525a7.048 7.048 0 01-2.51 2.51c-.697.392-1.926.673-3.525.74-1.26.058-1.64.07-4.844.07s-3.584-.012-4.844-.07c-1.6-.067-2.828-.348-3.525-.74a7.048 7.048 0 01-2.51-2.51c-.392-.697-.673-1.926-.74-3.525C2.174 15.744 2.162 15.364 2.162 12s.012-3.584.07-4.844c.067-1.6.348-2.828.74-3.525a7.048 7.048 0 012.51-2.51c.697-.392 1.926-.673 3.525-.74C8.416 2.174 8.796 2.162 12 2.162zm0-2.162C8.739 0 8.319.012 7.09.071 5.46.143 4.095.47 3.067.81A9.006 9.006 0 00.81 3.067C.47 4.095.143 5.46.071 7.09.012 8.319 0 8.739 0 12c0 3.261.012 3.681.071 4.91.072 1.63.398 3.095.81 4.124a9.006 9.006 0 002.257 2.257c1.03.412 2.494.738 4.124.81 1.229.059 1.629.071 4.91.071 3.261 0 3.681-.012 4.91-.071 1.63-.072 3.095-.398 4.124-.81a9.006 9.006 0 002.257-2.257c.412-1.03.738-2.494.81-4.124C24 15.681 24 15.261 24 12c0-3.261-.012-3.681-.071-4.91-.072-1.63-.398-3.095-.81-4.124a9.006 9.006 0 00-2.257-2.257C18.53.43 17.066.104 15.437.032 14.208-.036 13.788 0 12 0zm0 5.838a6.162 6.162 0 100 12.325 6.162 6.162 0 000-12.325zm0 10.278a4.116 4.116 0 110-8.232 4.116 4.116 0 010 8.232zm6.384-10.394a1.44 1.44 0 110-2.879 1.44 1.44 0 010 2.879z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 border-t border-gray-700 pt-4 text-center">
+                <p>&copy; 2024 QuinnNix. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    

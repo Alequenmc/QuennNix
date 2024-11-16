@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennNix </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #7a5da1, 0 0 10px #7a5da1, 0 0 15px #3d3d9e; }
+            100% { box-shadow: 0 0 10px #7a5da1, 0 0 20px #7a5da1, 0 0 30px #3d3d9e; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, rgba(122, 93, 161, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(122, 93, 161, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: pulse 4s infinite;
+        }
+
+        body {
+            background-color: #030308;
+            color: #ffffff;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(61, 61, 158, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 100% 0%, rgba(122, 93, 161, 0.1) 0%, transparent 50%);
+        }
+
+        .neon-border {
+            border: 1px solid rgba(122, 93, 161, 0.3);
+            animation: glow 2s infinite alternate;
+        }
+
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .nav-bg {
+            background: rgba(3, 3, 8, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #7a5da1, #3d3d9e, #7a5da1);
+            background-size: 200% auto;
+            animation: gradient 3s linear infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .card-bg {
+            background: rgba(26, 26, 29, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+
+        .hover-glow:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(122, 93, 161, 0.4);
+        }
+
+        .cyber-button {
+            background: linear-gradient(45deg, #7a5da1, #3d3d9e);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body class="cyber-grid">
+    <nav class="fixed w-full z-50 nav-bg py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span class="text-3xl font-bold gradient-text">QuennNix</span>
+                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 animate-pulse"></div>
+            </div>
+            <div class="flex items-center space-x-6">
+               
+                <button class="cyber-button px-6 py-2 rounded-full text-white font-medium hover:opacity-80 transition-all">
+                    Iniciar Sesión
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-32 pb-16 text-center relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent"></div>
+        <h1 class="text-6xl font-extrabold gradient-text sm:text-7xl md:text-8xl mb-4">
+            Servicios Quennix
+        </h1>
+        <p class="text-xl text-purple-200/80 max-w-2xl mx-auto">
+            Nuestros servicios.
+        </p>
+        <div class="mt-8 flex justify-center"><!--
+            Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+            El uso, distribución o modificación no autorizada de este código está prohibido.
+          -->
+          
+          <!--
+            Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+          -->
+          
+          <!--
+            Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+          -->
+          
+          <!--
+            Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+          -->
+          
+          <!--
+            Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+          --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+            <div class="w-40 h-1 rounded-full neon-border"></div>
+        </div>
+    </div>
+<!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card-bg p-8 rounded-2xl neon-border hover-glow floating-card">
+                <div class="relative">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 rotate-3 transition-transform hover:rotate-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                        </svg>
+                    </div><!--
+                        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                        El uso, distribución o modificación no autorizada de este código está prohibido.
+                      -->
+                      
+                      <!--
+                        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                      -->
+                      
+                      <!--
+                        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                      -->
+                      
+                      <!--
+                        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                      -->
+                      
+                      <!--
+                        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+                    <div class="absolute -top-2 -right-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs px-4 py-1 rounded-full shadow-lg">
+                        Premium
+                    </div>
+                </div>
+                <h2 class="mt-8 text-3xl font-bold gradient-text">Videos Aledown</h2>
+                <p class="mt-4 text-gray-300 leading-relaxed">Descarga videos en calidad 4k y 8k.</p>
+                <div class="mt-6 space-y-4">
+                    <div class="flex flex-wrap gap-2"><!--
+                        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                        El uso, distribución o modificación no autorizada de este código está prohibido.
+                      -->
+                      
+                      <!--
+                        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                      -->
+                      
+                      <!--
+                        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                      -->
+                      
+                      <!--
+                        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                      -->
+                      
+                      <!--
+                        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+                        <span class="px-4 py-1 rounded-full bg-purple-900/50 text-purple-200 text-sm border border-purple-500/30">4K Ultra HD</span>
+                        <span class="px-4 py-1 rounded-full bg-purple-900/50 text-purple-200 text-sm border border-purple-500/30">HDR</span>
+                        <span class="px-4 py-1 rounded-full bg-purple-900/50 text-purple-200 text-sm border border-purple-500/30">8K Ready</span>
+                    </div>
+                    <div class="block w-full">
+                    
+                      <div class="w-full cyber-button py-3 rounded-xl text-white font-medium cursor-not-allowed opacity-50">
+                        Próximamente
+                    </div>
+                    
+                  </div>
+                  
+                </div><!--
+                    Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                    El uso, distribución o modificación no autorizada de este código está prohibido.
+                  -->
+                  
+                  <!--
+                    Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                  -->
+                  
+                  <!--
+                    Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                  -->
+                  
+                  <!--
+                    Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                  -->
+                  
+                  <!--
+                    Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                  --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+            </div>
+            <div class="card-bg p-8 rounded-2xl neon-border hover-glow floating-card" style="animation-delay: 0.2s">
+                <div class="relative">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 -rotate-3 transition-transform hover:-rotate-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                        </svg>
+                    </div>
+                    <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs px-4 py-1 rounded-full shadow-lg">
+                        Nuevo
+                    </div>
+                </div><!--
+                    Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                    El uso, distribución o modificación no autorizada de este código está prohibido.
+                  -->
+                  
+                  <!--
+                    Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                  -->
+                  
+                  <!--
+                    Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                  -->
+                  
+                  <!--
+                    Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                  -->
+                  
+                  <!--
+                    Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                  --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+                <h2 class="mt-8 text-3xl font-bold gradient-text">QuennVix</h2>
+                <p class="mt-4 text-gray-300 leading-relaxed">Ver Peliculas con amigos en tiempo real.</p>
+                <div class="mt-6 space-y-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-1 rounded-full bg-blue-900/50 text-blue-200 text-sm border border-blue-500/30">Live Sync</span>
+                        <span class="px-4 py-1 rounded-full bg-blue-900/50 text-blue-200 text-sm border border-blue-500/30">Group Chat</span>
+                        <span class="px-4 py-1 rounded-full bg-blue-900/50 text-blue-200 text-sm border border-blue-500/30">Real-time</span>
+                    </div>
+                    <a href="../Alichativid/Alichativid.html" class="block w-full">
+                        <button class="w-full cyber-button py-3 rounded-xl text-white font-medium hover:opacity-80 transition-all">
+                            Unirse Ahora
+                        </button>
+                    </a>
+                </div><!--
+                    Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                    El uso, distribución o modificación no autorizada de este código está prohibido.
+                  -->
+                  
+                  <!--
+                    Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                  -->
+                  
+                  <!--
+                    Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                  -->
+                  
+                  <!--
+                    Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                  -->
+                  
+                  <!--
+                    Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                  --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+            </div>
+
+            <div class="card-bg p-8 rounded-2xl neon-border hover-glow floating-card" style="animation-delay: 0.4s">
+                <div class="relative">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 rotate-3 transition-transform hover:rotate-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs px-4 py-1 rounded-full shadow-lg">
+                        Próximamente
+                    </div>
+                </div><!--
+                    Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                    El uso, distribución o modificación no autorizada de este código está prohibido.
+                  -->
+                  
+                  <!--
+                    Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+                  -->
+                  
+                  <!--
+                    Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+                  -->
+                  
+                  <!--
+                    Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+                  -->
+                  
+                  <!--
+                    Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+                  -->
+                <h2 class="mt-8 text-3xl font-bold gradient-text">Aislinn AI</h2>
+                <p class="mt-4 text-gray-300 leading-relaxed">Inteligencia artificial.</p>
+                <div class="mt-6 space-y-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-1 rounded-full bg-gray-800 text-gray-300 text-sm border border-gray-700">IA</span>
+                        <span class="px-4 py-1 rounded-full bg-gray-800 text-gray-300 text-sm border border-gray-700">2.0.9</span>
+                        <span class="px-4 py-1 rounded-full bg-gray-800 text-gray-300 text-sm border border-gray-700">Beta</span>
+                    </div>
+                    <button class="w-full bg-gray-800/50 py-3 rounded-xl text-gray-400 cursor-not-allowed font-medium border border-gray-700">
+                        Próximamente
+                    </button>
+                </div>
+            </div><!--
+                Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+                El uso, distribución o modificación no autorizada de este código está prohibido.
+              -->
+              
+              <!--
+                Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+              -->
+              
+              <!--
+                Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+              -->
+              
+              <!--
+                Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+              -->
+              
+              <!--
+                Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+              --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      --><!--
+        Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
+        El uso, distribución o modificación no autorizada de este código está prohibido.
+      -->
+      
+      <!--
+        Código desarrollado exclusivamente por QuinnNix. Cualquier intento de uso sin consentimiento expreso será perseguido.
+      -->
+      
+      <!--
+        Plataforma creada por QuinnNix. Queda estrictamente prohibida la distribución sin la debida autorización.
+      -->
+      
+      <!--
+        Proyecto propiedad de QuinnNix. El uso o modificación de los scripts sin permiso está prohibido.
+      -->
+      
+      <!--
+        Desarrollo exclusivo de QuinnNix. El código de esta página está protegido por derechos de autor.
+      -->
+        </div>
+    </div>
+
+    <script>
+        gsap.from('.floating-card', {
+            duration: 1,
+            y: 100,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.floating-card');
+            cards.forEach((card, index) => {
+                const speed = 1 + (index * 0.1);
+                const yPos = -(window.pageYOffset * speed * 0.05);
+                gsap.to(card, {
+                    y: yPos,
+                    duration: 0.5,
+                    ease: "power1.out"
+                });
+            });
+            const title = document.querySelector('h1');
+            const titleOffset = -(window.pageYOffset * 0.3);
+            gsap.to(title, {
+                y: titleOffset,
+                duration: 0.5,
+                ease: "power1.out"
+            });
+        });
+        const createMouseTrail = () => {
+            const trail = document.createElement('div');
+            trail.className = 'mouse-trail';
+            trail.style.cssText = `
+                position: fixed;
+                width: 8px;
+                height: 8px;
+                background: rgba(122, 93, 161, 0.6);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s;
+            `;
+            document.body.appendChild(trail);
+            return trail;
+        };
+    
+        const trails = Array.from({ length: 10 }, createMouseTrail);
+        let currentTrail = 0;
+    
+        document.addEventListener('mousemove', (e) => {
+            const trail = trails[currentTrail];
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.transform = 'scale(1)';
+            
+            setTimeout(() => {
+                trail.style.transform = 'scale(0)';
+            }, 100);
+    
+            currentTrail = (currentTrail + 1) % trails.length;
+        });
+        const cards = document.querySelectorAll('.card-bg');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', (e) => {
+                gsap.to(card, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+    
+                const glow = document.createElement('div');
+                glow.className = 'card-glow';
+                glow.style.cssText = `
+                    position: absolute;
+                    inset: -20px;
+                    background: radial-gradient(circle at ${e.offsetX}px ${e.offsetY}px, 
+                                             rgba(122, 93, 161, 0.2), 
+                                             transparent 50%);
+                    pointer-events: none;
+                    opacity: 0;
+                `;
+                card.style.position = 'relative';
+                card.appendChild(glow);
+    
+                gsap.to(glow, {
+                    opacity: 1,
+                    duration: 0.3
+                });
+            });
+    
+            card.addEventListener('mousemove', (e) => {
+                const glow = card.querySelector('.card-glow');
+                if (glow) {
+                    glow.style.background = `radial-gradient(circle at ${e.offsetX}px ${e.offsetY}px, 
+                                           rgba(122, 93, 161, 0.2), 
+                                           transparent 50%)`;
+                }
+            });
+    
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+    
+                const glow = card.querySelector('.card-glow');
+                if (glow) {
+                    gsap.to(glow, {
+                        opacity: 0,
+                        duration: 0.3,
+                        onComplete: () => glow.remove()
+                    });
+                }
+            });
+        });
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.style.position = 'fixed';
+        renderer.domElement.style.top = '0';
+        renderer.domElement.style.left = '0';
+        renderer.domElement.style.zIndex = '-1';
+        document.body.prepend(renderer.domElement);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1000;
+        const posArray = new Float32Array(particlesCount * 3);
+    
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+    
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.005,
+            color: 0x7a5da1,
+            transparent: true,
+            opacity: 0.8
+        });
+    
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+        camera.position.z = 3;
+    
+       
+        const animate = () => {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.001;
+            particlesMesh.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        };
+    
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+    </body>
+    </html>

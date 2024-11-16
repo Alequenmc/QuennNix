@@ -1,0 +1,143 @@
+:root {
+    --neon-purple: #b829ff;
+    --neon-blue: #29b6ff;
+    --neon-cyan: #00fff2;
+    --dark-bg: #030014;
+}
+body {
+    background-color: var(--dark-bg);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(184, 41, 255, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 255, 242, 0.1) 0%, transparent 25%);
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.cyberpunk-grid {
+    background-image: linear-gradient(var(--neon-purple) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--neon-purple) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center center;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+.neon-text-purple {
+    color: var(--neon-purple);
+}
+
+.neon-text-blue {
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue),
+                 0 0 10px var(--neon-blue),
+                 0 0 20px var(--neon-blue);
+}
+
+.neon-text-cyan {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan),
+                 0 0 10px var(--neon-cyan),
+                 0 0 20px var(--neon-cyan);
+}
+
+.neon-border {
+    position: relative;
+}
+
+.neon-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue), var(--neon-cyan)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    animation: borderAnimation 8s linear infinite;
+}
+@keyframes borderAnimation {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.cyber-line {
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-purple));
+    animation: cyberpunkLine 3s linear infinite;
+}
+
+@keyframes cyberpunkLine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+
+
+.glitch {
+    animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+    2%, 64% { transform: translate(2px, 0) skew(0deg); }
+    4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+    62% { transform: translate(0, 0) skew(5deg); }
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-top: 30px;
+    text-decoration: underline;
+    color: var(--neon-purple);
+}
+
+.long-text {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    border: 2px solid var(--neon-blue);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: var(--neon-blue);
+    color: #fff;
+}

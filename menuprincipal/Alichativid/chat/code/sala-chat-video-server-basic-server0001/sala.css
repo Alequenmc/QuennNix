@@ -1,0 +1,342 @@
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.movie-card:hover .movie-overlay {
+    opacity: 1;
+}
+.glass-effect {
+    background: rgba(17, 25, 40, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.custom-tooltip {
+    position: relative;
+}
+.custom-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+
+
+/* Animación del texto brillante */
+@keyframes text-shine {
+    from {
+        background-position: 200% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
+
+.animate-text-shine {
+    background-size: 200% auto;
+    animation: text-shine 3s linear infinite;
+}
+
+/* Scrollbar personalizado */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 92, 246, 0.3) rgba(0, 0, 0, 0);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+}
+
+/* Efecto glass */
+
+
+/* Efecto glass morfismo */
+.glass-effect {
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto de brillo en hover */
+.hover-glow:hover {
+box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+/* Efecto de línea brillante */
+.shine-line {
+position: relative;
+overflow: hidden;
+}
+
+.shine-line::after {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 2px;
+background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), transparent);
+animation: shine-line 3s infinite;
+}
+
+@keyframes shine-line {
+100% {
+left: 100%;
+}
+}
+
+/* Efecto de pulso para los botones */
+.pulse-effect {
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0% {
+box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+}
+70% {
+box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+}
+100% {
+box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+}
+}
+
+/* Efecto de ondas en hover */
+.ripple-effect {
+position: relative;
+overflow: hidden;
+}
+
+.ripple-effect::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: rgba(139, 92, 246, 0.2);
+border-radius: 50%;
+transform: translate(-50%, -50%);
+transition: width 0.6s ease-out, height 0.6s ease-out;
+}
+
+.ripple-effect:hover::after {
+width: 200%;
+height: 200%;
+}
+
+/* Efecto de gradiente animado */
+.gradient-animate {
+background: linear-gradient(-45deg, #6366f1, #a855f7, #3b82f6, #8b5cf6);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
+
+/* Efecto de neón para texto */
+.neon-text {
+text-shadow: 0 0 5px rgba(139, 92, 246, 0.5),
+ 0 0 10px rgba(139, 92, 246, 0.3),
+ 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+/* Efecto de hover 3D */
+.hover-3d {
+transform-style: preserve-3d;
+perspective: 1000px;
+}
+
+.hover-3d:hover {
+transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Efecto de carga */
+.loading-bar {
+position: relative;
+overflow: hidden;
+}
+
+.loading-bar::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 200%;
+height: 100%;
+background: linear-gradient(90deg, 
+transparent,
+rgba(139, 92, 246, 0.2),
+rgba(139, 92, 246, 0.4),
+rgba(139, 92, 246, 0.2),
+transparent
+);
+animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+0% {
+transform: translateX(-100%);
+}
+100% {
+transform: translateX(100%);
+}
+}
+
+/* Efecto de desenfoque en hover */
+.hover-blur {
+filter: blur(0);
+transition: filter 0.3s ease;
+}
+
+.hover-blur:hover {
+filter: blur(1px);
+}
+
+/* Efecto de brillo en los bordes */
+.glow-border {
+position: relative;
+}
+
+.glow-border::before {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(45deg, #6366f1, #a855f7, #3b82f6, #8b5cf6);
+border-radius: inherit;
+z-index: -1;
+animation: border-glow 3s linear infinite;
+}
+
+@keyframes border-glow {
+0% {
+opacity: 0.5;
+}
+50% {
+opacity: 1;
+}
+100% {
+opacity: 0.5;
+}
+}
+
+/* Efecto de escala en hover para elementos del playlist */
+.playlist-item-scale {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.playlist-item-scale:hover {
+transform: scale(1.02);
+box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Efecto de rebote suave */
+.bounce-hover {
+animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-5px);
+}
+}
+
+/* Efecto de rotación para iconos */
+.rotate-hover:hover {
+animation: rotate 0.5s ease;
+}
+
+@keyframes rotate {
+0% {
+transform: rotate(0deg);
+}
+100% {
+transform: rotate(360deg);
+}
+}
+
+/* Efecto de partículas en hover */
+.particle-effect {
+position: relative;
+}
+
+.particle-effect::before {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background-image: radial-gradient(circle, rgba(139, 92, 246, 0.2) 1px, transparent 1px);
+background-size: 10px 10px;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.particle-effect:hover::before {
+opacity: 1;
+animation: particles 0.5s linear;
+}
+
+@keyframes particles {
+0% {
+background-position: 0 0;
+}
+100% {
+background-position: 10px 10px;
+}
+}
+

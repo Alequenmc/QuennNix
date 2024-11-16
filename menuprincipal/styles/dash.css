@@ -1,0 +1,18 @@
+
+.futuristic-bg {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+}
+
+.neon-hover:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+}
+.neon-toggle {
+    background: linear-gradient(45deg, cyan, purple);
+}
+
+.neon-circle {
+    box-shadow: 0 0 10px cyan, 0 0 20px purple;
+}
+
+

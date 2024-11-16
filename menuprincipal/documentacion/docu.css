@@ -1,0 +1,21 @@
+.code-container {
+    background-color: #282c34;
+    border-radius: 8px;
+    padding: 15px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.code-container code {
+    color: #ffffff;
+}
+
+.keyword { color: #ff0080; }
+.string { color: #00ff99; }
+.comment { color: #6699ff; font-style: italic; }
+.function { color: #00ccff; }
+.operator { color: #ffcc00; }
+.number { color: #ff5e00; }
+.variable { color: #ff00ff; }

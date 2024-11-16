@@ -1,0 +1,297 @@
+:root {
+    --primary-color: #007bff;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    --secondary-color: #00356b;
+    --text-color: #333;
+    --background-color: #f0f8ff;
+}/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+/* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+
+/* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+
+ /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+
+/* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    overflow-x: hidden;
+}/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+/* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+
+/* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+
+ /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+
+/* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+
+
+.glow-text {/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: rgb(255, 255, 255);
+    padding: 80px 0;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+/* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+
+/* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+
+ /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+
+/* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 3rem;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+/* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+
+/* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+
+ /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+
+/* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 10px 15px rgba(0, 123, 255, 0.15);
+}/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+/* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+
+/* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+
+ /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+
+/* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+
+
+.card-img {
+    width: 100%;
+    height: 250px;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    object-fit: contain;
+    border-radius: 20px 20px 0 0;
+}
+
+.card h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.card p {/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    display: inline-block;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px rgba(0, 123, 255, 0.3);
+}
+
+.partners-section {/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    padding: 100px 0;
+    position: relative;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.contact-section {/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 80px 0;
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+.contact-button {
+    background: white;
+    color: var(--primary-color);
+    padding: 15px 30px;
+    border-radius: 50px;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    color: var(--secondary-color);
+    background-color: #e6f0ff;
+}
+
+#particles-js, #page-transition {
+    position: fixed;/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+    /* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+    
+    /* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+    
+     /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+    
+    /* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#page-transition {
+    background: #fff;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+/* Esta página fue creada por QuinnNix. El uso no autorizado está totalmente prohibido y puede implicar acciones legales */
+
+/* Desarrollo exclusivo de QuinnNix. Queda prohibida la distribución sin el consentimiento previo, con consecuencias legales */
+
+/* Código propiedad de QuinnNix. El uso sin permiso está prohibido y podría resultar en medidas legales */
+
+ /* Plataforma desarrollada por QuinnNix. Cualquier uso o distribución no autorizada será perseguido por la ley */
+
+/* Proyecto propiedad de QuinnNix. La reproducción o modificación no autorizada está sujeta a sanciones legales */

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennVix Alpha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(34, 211, 238, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+        }
+
+        @keyframes cyber-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
+            50% { box-shadow: 0 0 40px rgba(34, 211, 238, 0.8); }
+        }
+
+        @keyframes text-shimmer {
+            0% { background-position: -100%; }
+            100% { background-position: 200%; }
+        }
+
+        .cyber-border {
+            border: 2px solid transparent;
+            background-image: linear-gradient(45deg, #06b6d4, #3b82f6, #06b6d4);
+            background-size: 200% auto;
+            animation: text-shimmer 3s linear infinite;
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-effect {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .cyber-glow {
+            animation: cyber-glow 2s infinite;
+        }
+
+        .hexagon {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        .grid-bg {
+            background-image: radial-gradient(circle at 1px 1px, rgba(34, 211, 238, 0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans selection:bg-cyan-500 overflow-x-hidden">
+    <div class="fixed inset-0 grid-bg opacity-50"></div>
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute w-full h-full">
+            <div class="absolute w-4 h-4 bg-cyan-500/30 rounded-full animate-[float_4s_ease-in-out_infinite]" style="top: 20%; left: 30%"></div>
+            <div class="absolute w-6 h-6 bg-blue-500/20 rounded-full animate-[float_6s_ease-in-out_infinite]" style="top: 60%; left: 70%"></div>
+            <div class="absolute w-8 h-8 bg-purple-500/20 rounded-full animate-[float_5s_ease-in-out_infinite]" style="top: 40%; left: 50%"></div>
+        </div>
+    </div>
+    <header class="fixed w-full z-50 backdrop-blur-xl bg-black/40 border-b border-cyan-500/30">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-4">
+                    
+                        <img src="img/Quennix.png" alt="QuennVix" 
+                             class="w-14 h-14 rounded-full object-cover bg-gradient-to-r from-cyan-500 to-blue-600 pulse-effect">
+                        
+                        <h1 class="text-4xl font-bold bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 bg-clip-text text-transparent bg-300% animate-[text-shimmer_3s_linear_infinite]">
+                            QuennVix
+                        </h1>
+                    </div>
+                    
+                    
+                    <nav class="hidden lg:flex space-x-8">
+                        <a href="" class="group relative px-4 py-2">
+                            <span class="absolute inset-0 w-full h-full transform transition-transform group-hover:translate-x-1 group-hover:translate-y-1 bg-cyan-500/20 rounded"></span>
+                            <span class="relative flex items-center space-x-2">
+                                <i class="fas fa-meteor text-cyan-400"></i>
+                                <span>Descubre</span>
+                            </span>
+                        </a>
+                        <a href="#" class="group relative px-4 py-2">
+                            <span class="absolute inset-0 w-full h-full transform transition-transform group-hover:translate-x-1 group-hover:translate-y-1 bg-cyan-500/20 rounded"></span>
+                            <span class="relative flex items-center space-x-2">
+                                <i class="fas fa-satellite text-cyan-400"></i>
+                                <span>Canales</span>
+                            </span>
+                        </a>
+                        <a href="#" class="group relative px-4 py-2">
+                            <span class="absolute inset-0 w-full h-full transform transition-transform group-hover:translate-x-1 group-hover:translate-y-1 bg-cyan-500/20 rounded"></span>
+                            <span class="relative flex items-center space-x-2">
+                                <i class="fas fa-brain text-cyan-400"></i>
+                                <span>IA </span>
+                            </span>
+                        </a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <button class="relative group" onclick="handleSearch()">
+                        <span class="absolute inset-0 w-full h-full bg-cyan-500/20 rounded-full blur transform transition-transform group-hover:scale-125"></span>
+                        <i class="fas fa-search text-cyan-400 relative z-10 text-xl"></i>
+                    </button>
+
+                    <button class="relative group" onclick="handleNotifications()">
+                        <span class="absolute inset-0 w-full h-full bg-cyan-500/20 rounded-full blur transform transition-transform group-hover:scale-125"></span>
+                        <i class="fas fa-bell text-cyan-400 relative z-10 text-xl"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-ping"></span>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full"></span>
+                    </button>
+                
+                </div>
+                
+                <!-- Js -->
+                
+                
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pt-32 space-y-24">
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 z-10">
+                <h2 class="text-7xl font-bold leading-tight">
+                    <span class="block bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                        QuennVix
+                    </span>
+                   
+                </h2>
+                
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    Usa IAs avanzadas y experiencias de ver películas con tus amigos y más.
+                </p>
+
+                <div class="flex flex-wrap gap-6">
+                    <button 
+                    class="relative group" 
+                    onclick="location.href='code/sala-chat-video-server-basic-server0001/sala.html'">
+                    <span class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl blur-lg transform transition-all duration-200 group-hover:scale-110"></span>
+                    <span class="relative block px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white transform transition-transform group-hover:scale-105">
+                        Comenzar Ahora
+                    </span>
+                </button>
+                
+
+                    <button class="relative group">
+                        <span class="absolute inset-0 bg-cyan-500/20 rounded-xl blur-lg transform transition-all duration-200 group-hover:scale-110"></span>
+                        <span class="relative block px-8 py-4 rounded-xl border-2 border-cyan-500 text-cyan-400 transform transition-transform group-hover:scale-105">
+                            Explorar Más
+                        </span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-3 gap-6 mt-12">
+                    <div class="text-center space-y-2">
+                        <div class="text-4xl font-bold text-cyan-400">--</div>
+                        <div class="text-gray-400">Usuarios</div>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <div class="text-4xl font-bold text-cyan-400">--</div>
+                        <div class="text-gray-400">Contenidos</div>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <div class="text-4xl font-bold text-cyan-400">2026</div>
+                        <div class="text-gray-400">Lanzamiento Global</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        
+            <div class="relative floating-element">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 rounded-3xl blur-[100px]"></div>
+                <div class="relative grid grid-cols-2 gap-6 p-8 rounded-3xl border border-cyan-500/30 backdrop-blur-xl">
+                    <div class="bg-black/40 p-6 rounded-xl border border-cyan-500/30 transform transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 group">
+                        <i class="fas fa-film text-4xl text-cyan-400 mb-4 transform transition-transform group-hover:scale-110"></i>
+                        <h3 class="text-xl font-semibold text-cyan-300">Películas Hd</h3>
+                        <p class="text-gray-400 mt-2">Calidad cinematográfica impresionante</p>
+                    </div>
+
+                    <div class="bg-black/40 p-6 rounded-xl border border-cyan-500/30 transform transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 group">
+                        <i class="fas fa-vr-cardboard text-4xl text-cyan-400 mb-4 transform transition-transform group-hover:scale-110"></i>
+                        <h3 class="text-xl font-semibold text-cyan-300">VR </h3>
+                        <p class="text-gray-400 mt-2">Peliculas en VR</p>
+                    </div>
+
+                    <div class="bg-black/40 p-6 rounded-xl border border-cyan-500/30 transform transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 group">
+                        <i class="fas fa-robot text-4xl text-cyan-400 mb-4 transform transition-transform group-hover:scale-110"></i>
+                        <h3 class="text-xl font-semibold text-cyan-300">IA </h3>
+                        <p class="text-gray-400 mt-2">Recomendaciones personalizadas</p>
+                    </div>
+
+                    <div class="bg-black/40 p-6 rounded-xl border border-cyan-500/30 transform transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 group">
+                        <i class="fas fa-users text-4xl text-cyan-400 mb-4 transform transition-transform group-hover:scale-110"></i>
+                        <h3 class="text-xl font-semibold text-cyan-300">Comunidad</h3>
+                        <p class="text-gray-400 mt-2">Conecta con la comunidad</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative py-24">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-3xl blur-[80px]"></div>
+            
+            <div class="text-center mb-16 relative z-10">
+                <h2 class="text-5xl font-bold bg-gradient-to-r from-cyan-300 to-blue-600 bg-clip-text text-transparent mb-6">
+                    Bienvenido a QuennVix
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                   te mostramos algunas de nuestras tecnologias y servicios 
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-lg transform transition-all duration-300 group-hover:scale-110"></div>
+                    <div class="relative bg-black/40 p-8 rounded-2xl border border-cyan-500/30 h-full transform transition-all duration-300 hover:translate-y-[-10px]">
+                        <div class="hexagon w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center mb-6">
+                            <i class="fas fa-microchip text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-4">Streaming</h3>
+                        <p class="text-gray-400">Tecnología de transmisión para una calidad sin pérdidas y latencia cero.</p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-lg transform transition-all duration-300 group-hover:scale-110"></div>
+                    <div class="relative bg-black/40 p-8 rounded-2xl border border-purple-500/30 h-full transform transition-all duration-300 hover:translate-y-[-10px]">
+                        <div class="hexagon w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center mb-6">
+                            <i class="fas fa-brain text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-purple-300 mb-4">AiPi</h3>
+                        <p class="text-gray-400">IA con recomendación neuronal que aprende y evoluciona con tus preferencias.</p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-lg transform transition-all duration-300 group-hover:scale-110"></div>
+                    <div class="relative bg-black/40 p-8 rounded-2xl border border-blue-500/30 h-full transform transition-all duration-300 hover:translate-y-[-10px]">
+                        <div class="hexagon w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center mb-6">
+                            <i class="fas fa-vr-cardboard text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-300 mb-4">AleVR</h3>
+                        <p class="text-gray-400">Realidad virtual y aumentada integradas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-3xl blur-[120px]"></div>
+                <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <h3 class="text-4xl font-bold bg-gradient-to-r from-cyan-300 to-purple-600 bg-clip-text text-transparent">
+                            QuennVix
+                        </h3>
+                        <p class="text-xl text-gray-300">
+                            Conecta con amigos en tiempo real, comparte reacciones y disfruta de contenido juntos en nuestras salas virtuales.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-cyan-400"></i>
+                                <span class="text-gray-300">Chat en vivo con IA moderadora</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-cyan-400"></i>
+                                <span class="text-gray-300">Reacciones en tiempo real</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-cyan-400"></i>
+                                <span class="text-gray-300">Salas temáticas personalizables</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-cyan-400"></i>
+                                <span class="text-gray-300">Ver películas con llamada de voz y videollamada en tiempo real</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/30 to-purple-500/30 rounded-2xl blur-xl transform transition-all duration-300 group-hover:scale-105"></div>
+                        <div class="relative bg-black/60 p-6 rounded-2xl border border-cyan-500/30 backdrop-blur-xl">
+                            <div class="flex flex-col h-[400px]">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full pulse-effect"></div>
+                                        <span class="text-cyan-300">Sala #6050</span>
+                                    </div>
+                                    <div class="flex space-x-3">
+                                        <i class="fas fa-users text-cyan-400"></i>
+                                        <span class="text-cyan-300">128 online</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-1 space-y-4 overflow-y-auto">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+                                        <div class="bg-cyan-500/10 rounded-lg p-3">
+                                            <p class="text-cyan-300">¡Esta escena es increíble! 🚀</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3 justify-end">
+                                        <div class="bg-purple-500/10 rounded-lg p-3">
+                                            <p class="text-purple-300">Totalmente de acuerdo 🎬</p>
+                                        </div>
+                                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-600"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <div class="relative">
+                                        <input type="text" placeholder="Escribe un mensaje..." class="w-full bg-black/40 border border-cyan-500/30 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50">
+                                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-cyan-400 hover:text-cyan-300 transition-colors">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative py-24 px-4">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-3xl blur-[100px]"></div>
+            
+            <div class="relative max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                    <span class="bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                        QuennVix te Espera
+                    </span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-12">
+                    Únete a QuennVix ahora mismo 
+                </p>
+    
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <!-- Plan Gratuito -->
+                    <div class="p-8 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-500/20 backdrop-blur-sm">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-4">Plan Gratuito</h3>
+                        <p class="text-4xl font-bold mb-6">$0<span class="text-lg font-normal">/mes</span></p>
+                        <ul class="text-left space-y-4 mb-8 text-gray-300">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Acceso a chat público
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Catálogo básico de películas
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Visualización con anuncios
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Ver 20 peliculas por mes 
+                            </li>
+                        </ul>
+                        <button class="relative group w-full">
+                            <span class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl blur-lg transform transition-all duration-200 group-hover:scale-110"></span>
+                            <span class="relative block px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white transform transition-transform group-hover:scale-105">
+                                Comenzar Gratis
+                            </span>
+                        </button>
+                    </div>
+    
+                    <!-- Plan Pro -->
+                    <div class="p-8 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-600/10 border border-purple-500/20 backdrop-blur-sm">
+                        <h3 class="text-2xl font-bold text-purple-400 mb-4">Plan Pro</h3>
+                        <p class="text-4xl font-bold mb-6">$10<span class="text-lg font-normal">/mes</span></p>
+                        <ul class="text-left space-y-4 mb-8 text-gray-300">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Servidor privado personalizado
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Chat y llamadas de voz
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Catálogo extendido de películas
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Sin anuncios
+                            </li>
+                        </ul>
+                        <button class="relative group w-full">
+                            <span class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl blur-lg transform transition-all duration-200 group-hover:scale-110"></span>
+                            <span class="relative block px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-600 text-white transform transition-transform group-hover:scale-105">
+                                Ver Plan Pro
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-cyan-500/30 py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-blue-600 bg-clip-text text-transparent">QuennVix</h4>
+                        <p class="text-gray-400">El futuro del entretenimiento digital</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fab fa-discord text-xl"></i>
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-semibold text-cyan-300">Plataforma</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Películas</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Series</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Gaming</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">VR Experience</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-semibold text-cyan-300">Recursos</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Documentación</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">API</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Status</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-semibold text-cyan-300">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Privacidad</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Términos</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Cookies</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-cyan-300 transition-colors">Licencias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+</div>
+<script src="menuchat.js"></script>
+
+</body>
+</html>

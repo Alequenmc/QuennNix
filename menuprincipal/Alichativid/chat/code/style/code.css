@@ -1,0 +1,85 @@
+body {
+    background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
+    background-size: cover;
+    overflow: hidden;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.futuristic-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+    transition: background 0.4s ease;
+}
+.futuristic-input:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.futuristic-button {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0, 198, 255, 0.6);
+}
+.futuristic-button:hover {
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 198, 255, 0.8);
+}
+.container {
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+.transition-opacity {
+    transition: opacity 0.5s ease-in-out;
+}
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 1.5rem;
+    color: #00c6ff;
+}
+p, input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+footer {
+    backdrop-filter: blur(10px);
+}
+.vip-lock {
+    position: relative;
+}
+.vip-lock::before {
+    content: '\1F512';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #f39c12;
+}
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

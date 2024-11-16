@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennNix Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+    <div class="cyber-background"></div>
+    <div class="grid-background"></div>
+    
+    <div id="notifications" class="notification">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span id="notification-text">Bienvenido Quennix</span>
+        </div>
+    </div>
+
+ 
+
+    <main class="min-h-screen flex items-center justify-center p-4">
+        <div class="main-container p-8 sm:p-12 rounded-lg w-full max-w-4xl mx-auto text-center relative">
+            <div class="mb-12">
+                <h1 class="cyber-title mb-6">QUENNIX</h1>
+<p class="text-blue-300 text-lg mb-4">
+    ¡Bienvenido a <span class="text-neon-purple font-bold">Quennnix</span> 🚀🌌<br><br>
+  
+</p>
+
+                <div class="flex items-center justify-center mb-2">
+                    <div class="status-indicator"></div>
+                    <span class="text-green-400">SISTEMA OPERATIVO</span>
+                </div>
+            </div>
+
+           
+
+            <div class="system-section mt-8">
+                <h2 class="text-2xl text-blue-300 mb-4">Comienza a probar las funciones de QuennNix</h2>
+                <button onclick="iniciarSistema()" class="start-button">
+                    INICIAR 
+                </button>
+            </div>
+            <div class="system-section">
+                <h2 class="text-2xl text-blue-300 mb-4">Estado del Sistema</h2>
+                <div class="stats-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="stat-card bg-dark-bg p-4 rounded-lg shadow-lg">
+                        <h3 class="text-blue-400 text-lg">Usuarios en Línea</h3>
+                        <p id="usuarios-online" class="text-green-400 text-2xl font-bold">--</p>
+                    </div>
+                    <div class="stat-card bg-dark-bg p-4 rounded-lg shadow-lg">
+                        <h3 class="text-blue-400 text-lg">Latencia</h3>
+                        <p id="latencia" class="text-green-400 text-2xl font-bold">-- ms</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="system-section mt-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left text-blue-200">
+                    <div>
+                        <p>Versión: 7.1.5 Alpha</p>
+                        <p>Última actualización: 17 de noviembre </p>
+                    </div>
+                    <div>
+                        <p>Rendimiento: Estable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let notificationQueue = [];
+        let isShowingNotification = false;
+
+        const notifications = [
+            "Bienvenido a Quennix",
+            "Iniciando verificación de seguridad...",
+            "Cargando módulos principales...",
+            "Optimizando rendimiento del sistema...",
+            "Comprobando actualizaciones pendientes...",
+            "Estableciendo conexiones seguras...",
+           
+        ];
+
+        function showNextNotification() {
+            if (notificationQueue.length > 0 && !isShowingNotification) {
+                isShowingNotification = true;
+                const message = notificationQueue.shift();
+                const notification = document.getElementById('notifications');
+                document.getElementById('notification-text').textContent = message;
+                
+                notification.style.right = '20px';
+                
+                setTimeout(() => {
+                    notification.style.right = '-300px';
+                    setTimeout(() => {
+                        isShowingNotification = false;
+                        showNextNotification();
+                    }, 500);
+                }, 3000);
+            }
+        }
+
+        function queueNotification(message) {
+            notificationQueue.push(message);
+            if (!isShowingNotification) {
+                showNextNotification();
+            }
+        }
+
+        function iniciarSistema() {
+            notifications.forEach((notification, index) => {
+                setTimeout(() => {
+                    queueNotification(notification);
+                }, index * 500);
+            });
+            gsap.to(".start-button", {
+                scale: 0.95,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 1
+            });
+            setTimeout(() => {
+                queueNotification('Acceso concedido. Redirigiendo...');
+                setTimeout(() => {
+                    window.location.href = 'menuprincipal/menuprincipal.html';
+                }, 3500);
+            }, notifications.length * 500 + 2000);
+        }
+        gsap.to(".stat-card", {
+            y: -5,
+            duration: 2,
+            ease: "power1.inOut",
+            yoyo: true,
+            repeat: -1,
+            stagger: {
+                each: 0.2,
+                from: "random"
+            }
+        });
+        gsap.to(".status-indicator", {
+            scale: 1.2,
+            duration: 1,
+            ease: "power1.inOut",
+            yoyo: true,
+            repeat: -1
+        });
+        gsap.to(".grid-background", {
+            backgroundPosition: "0 20px",
+            duration: 20,
+            ease: "none",
+            repeat: -1
+        });
+        document.querySelectorAll('.system-section').forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                gsap.to(section, {
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            section.addEventListener('mouseleave', () => {
+                gsap.to(section, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+        function updateStats() {
+        const stats = {
+            latencia: Math.floor(Math.random() * 30) + 20, 
+            usuariosOnline: Math.floor(Math.random() * 100) + 50,
+            actividad: Math.floor(Math.random() * 50) + 50 
+        };
+
+            document.querySelectorAll('.stat-card').forEach(card => {
+                const statType = card.querySelector('h3').textContent.toLowerCase();
+                const statValue = card.querySelector('p');
+                
+                if (stats[statType]) {
+                    gsap.to(statValue, {
+                        textContent: stats[statType],
+                        duration: 1,
+                        snap: { textContent: 1 },
+                        ease: "power1.inOut"
+                    });
+                }
+            });
+        }
+
+        setInterval(updateStats, 5000);
+        let systemInitialized = false;
+
+        function initializeSystem() {
+            if (!systemInitialized) {
+                systemInitialized = true;
+                setTimeout(() => {
+                    queueNotification('Bienvenido a Quennix');
+                }, 1000);
+                updateStats();
+                gsap.from('.system-section', {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out"
+                });
+            }
+        }
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                updateStats();
+            }
+        });
+        document.addEventListener('DOMContentLoaded', initializeSystem);
+        const systemMessages = [
+            "Monitorizando rendimiento del sistema",
+            "Optimizando recursos",
+            "Verificando conexiones de Usuarios online",
+            
+        ];
+
+        function showRandomSystemMessage() {
+            const randomMessage = systemMessages[Math.floor(Math.random() * systemMessages.length)];
+            queueNotification(randomMessage);
+        }
+
+        setInterval(showRandomSystemMessage, 45000);
+
+        // Manejar errores de carga
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            queueNotification('Error del sistema: ' + msg);
+            return false;
+        };
+
+        // Detecta la conexión a Internet
+        window.addEventListener('online', () => {
+            queueNotification('Conexión restablecida');
+            updateStats();
+        });
+
+        window.addEventListener('offline', () => {
+            queueNotification('Conexión perdida');
+        });
+    </script>
+</body>
+</html>

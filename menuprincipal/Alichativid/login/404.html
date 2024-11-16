@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página en Construcción</title>
+    <link rel="icon" href="./imagenes/AW.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: rgb(255, 252, 255);
+            --secondary-color: #00ff40;
+            --tertiary-color: #00fff9;
+            --bg-color: #000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Unmeasured', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        #scene-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        p {
+            font-size: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 2rem;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress {
+            width: 0;
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-20deg);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        #progress-text {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8em 1.5em;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--bg-color);
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 90px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .btn:hover::before {
+            transform: scale(1);
+        }
+
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--secondary-color);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--tertiary-color);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(83px, 9999px, 56px, 0); }
+            5% { clip: rect(66px, 9999px, 84px, 0); }
+            10% { clip: rect(67px, 9999px, 97px, 0); }
+            15% { clip: rect(77px, 9999px, 34px, 0); }
+            20% { clip: rect(73px, 9999px, 8px, 0); }
+            25% { clip: rect(57px, 9999px, 98px, 0); }
+            30% { clip: rect(20px, 9999px, 67px, 0); }
+            35% { clip: rect(53px, 9999px, 54px, 0); }
+            40% { clip: rect(51px, 9999px, 59px, 0); }
+            45% { clip: rect(94px, 9999px, 44px, 0); }
+            50% { clip: rect(58px, 9999px, 83px, 0); }
+            55% { clip: rect(48px, 9999px, 35px, 0); }
+            60% { clip: rect(77px, 9999px, 50px, 0); }
+            65% { clip: rect(49px, 9999px, 57px, 0); }
+            70% { clip: rect(55px, 9999px, 10px, 0); }
+            75% { clip: rect(72px, 9999px, 86px, 0); }
+            80% { clip: rect(46px, 9999px, 44px, 0); }
+            85% { clip: rect(53px, 9999px, 74px, 0); }
+            90% { clip: rect(60px, 9999px, 28px, 0); }
+            95% { clip: rect(22px, 9999px, 93px, 0); }
+            100% { clip: rect(87px, 9999px, 16px, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="scene-container"></div>
+    <div class="content">
+        <h1 class="glitch" data-text="404">404</h1>
+        <p class="glitch" data-text="PÁGINA EN CONSTRUCCIÓN">PÁGINA EN CONSTRUCCIÓN</p>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p id="progress-text">Construcción en progreso: 0%</p>
+        </div>
+        <a href="menuprincipal.html" class="btn">Volver al Inicio</a>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('scene-container').appendChild(renderer.domElement);
+
+        // Fog
+        scene.fog = new THREE.FogExp2(0x000000, 0.02);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 5000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 50;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0x00ff00,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        camera.position.z = 30;
+        const clock = new THREE.Clock();
+
+        function animate() {
+            const elapsedTime = clock.getElapsedTime();
+
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.005;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        const progressBar = document.getElementById('progress'); 
+const progressText = document.getElementById('progress-text');
+let progress = 0;
+let goingUp = true; 
+function updateProgress() {
+    if (goingUp) {
+        progress += Math.random() * 5; 
+        if (progress >= 22) { 
+            progress = 22; 
+            goingUp = false; 
+        }
+    } else {
+        progress -= Math.random() * 5; 
+        if (progress <= 0) { 
+            progress = 0; 
+            goingUp = true;
+        }
+    }
+
+    gsap.to(progressBar, {
+        width: `${progress}%`,
+        duration: 0.5,
+        ease: 'power2.out'
+    });
+    progressText.textContent = `Construcción en progreso: ${Math.round(progress)}%`;
+    
+    setTimeout(updateProgress, Math.random() * 1000 + 500);
+}
+
+updateProgress();
+
+        const glitchElements = document.querySelectorAll('.glitch');
+        
+        glitchElements.forEach(element => {
+            setInterval(() => {
+                element.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                setTimeout(() => {
+                    element.style.transform = 'translate(0, 0)';
+                }, 50);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

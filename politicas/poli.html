@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwindcss.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --neon-purple: #b829ff;
+            --neon-blue: #29b6ff;
+            --neon-cyan: #00fff2;
+            --dark-bg: #030014;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(184, 41, 255, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 242, 0.1) 0%, transparent 25%);
+            background-attachment: fixed;
+        }
+
+        .cyberpunk-grid {
+            background-image: linear-gradient(var(--neon-purple) 1px, transparent 1px),
+                            linear-gradient(90deg, var(--neon-purple) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            opacity: 0.1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .neon-text-purple {
+            color: var(--neon-purple);
+           
+        }
+
+        .neon-text-blue {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue),
+                         0 0 10px var(--neon-blue),
+                         0 0 20px var(--neon-blue);
+        }
+
+        .neon-text-cyan {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px var(--neon-cyan),
+                         0 0 10px var(--neon-cyan),
+                         0 0 20px var(--neon-cyan);
+        }
+
+        .neon-border {
+            position: relative;
+        }
+
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-radius: inherit;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue), var(--neon-cyan)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            animation: borderAnimation 8s linear infinite;
+        }
+
+       
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .cyber-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-purple));
+            animation: cyberpunkLine 3s linear infinite;
+        }
+
+        @keyframes cyberpunkLine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .glitch {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyberpunk-grid"></div>
+    <canvas id="matrix" class="matrix-bg"></canvas>
+    <header class="sticky top-0 z-50 glass-card">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-3xl font-bold neon-text-purple glitch">
+                    QuennNix
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:neon-text-cyan transition-all duration-300">INICIO</a>
+                    <a href="#privacidad" class="hover:neon-text-blue transition-all duration-300">PRIVACIDAD</a>
+                    <a href="#derechos" class="hover:neon-text-purple transition-all duration-300">DERECHOS</a>
+                    <a href="#contacto" class="hover:neon-text-cyan transition-all duration-300">CONTACTO</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="inicio" class="min-h-screen flex items-center justify-center relative overflow-hidden py-20">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 neon-text-purple glitch">
+                POLÍTICA DE PRIVACIDAD
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto">
+                PROTEGIENDO TUS DATOS
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#privacidad" class="px-8 py-4 neon-border rounded-lg glass-card hover:neon-text-cyan transition-all transform hover:scale-105">
+                    EXPLORAR
+                </a>
+                <a href="#derechos" class="px-8 py-4 neon-border rounded-lg glass-card hover:neon-text-purple transition-all transform hover:scale-105">
+                    TUS DERECHOS
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="privacidad" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-xl neon-border hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="cyber-line w-16 h-16 mb-6 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 neon-text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 neon-text-purple">ENCRIPTACIÓN AVANZADA</h3>
+                    <p class="text-gray-300">Protección de datos mediante tecnología de encriptación avanzada.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-xl neon-border hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="cyber-line w-16 h-16 mb-6 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 neon-text-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 neon-text-blue">CONTROL</h3>
+                    <p class="text-gray-300">Interface directa para el control de tu información personal.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-xl neon-border hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="cyber-line w-16 h-16 mb-6 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 neon-text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 neon-text-cyan">DATOS</h3>
+                    <p class="text-gray-300">Visualización de tus datos en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Derechos con Timeline Futurista -->
+    <section id="derechos" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center neon-text-purple">TUS DERECHOS</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Timeline Item 1 -->
+                <div class="glass-card p-6 rounded-xl neon-border">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <div class="cyber-line p-4 rounded-lg">
+                                <h3 class="text-xl font-bold neon-text-cyan">ACCESO</h3>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 md:pl-8">
+                            <p class="text-gray-300">Conexión directa a tu información personal almacenada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="glass-card p-6 rounded-xl neon-border">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <div class="cyber-line p-4 rounded-lg">
+                                <h3 class="text-xl font-bold neon-text-purple">MODIFICACIÓN</h3>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 md:pl-8">
+                            <p class="text-gray-300">Alteración instantánea de datos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="glass-card p-6 rounded-xl neon-border">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <div class="cyber-line p-4 rounded-lg">
+                                <h3 class="text-xl font-bold neon-text-blue">ELIMINACIÓN TOTAL</h3>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 md:pl-8">
+                            <p class="text-gray-300">Borrado completo de datos con confirmación en el panel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="glass-card mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4 neon-text-cyan">CONTACTO</h4>
+                    <p class="text-gray-300">QuennNix@gmail.com</p>
+                    <p class="text-gray-300">+51917031675</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4 neon-text-purple">ENLACES</h4>
+                    <ul class="space-y-2">
+
+                        <li><a href="../index.html" class="text-gray-300 hover:neon-text-cyan transition-all">Menu</a></li>
+                        <li><a href="#derechos" class="text-gray-300 hover:neon-text-purple transition-all">DERECHOS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4 neon-text-blue">LEGAL</h4>
+                    <ul class="space-y-2">
+                        <li><a href="./privacidad/privacidad.html" class="text-gray-300 hover:neon-text-cyan transition-all">TÉRMINOS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="neon-text-purple">&copy; 2024 QuennNix - TODOS LOS DERECHOS RESERVADOS</p>
+            </div>
+        </div>
+    </footer>
+
+   
+</body>
+</html>

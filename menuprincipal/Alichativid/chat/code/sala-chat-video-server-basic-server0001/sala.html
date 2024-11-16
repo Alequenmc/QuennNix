@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennVix Alpha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px rgba(0,149,255,0.5); }
+    50% { box-shadow: 0 0 20px rgba(0,149,255,0.8); }
+    100% { box-shadow: 0 0 5px rgba(0,149,255,0.5); }
+}
+
+@keyframes floatingCard {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.movie-container {
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a, #2a2a2a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+.movie-card {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-card:hover {
+    transform: scale(1.05) translateY(-10px);
+    animation: glowPulse 2s infinite;
+    z-index: 10;
+}
+
+.movie-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.movie-card:hover::before {
+    animation: shine 1.5s infinite;
+    opacity: 1;
+}
+
+
+.nav-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00f2ff, #00ff88);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.futuristic-button {
+    background: linear-gradient(45deg, #00f2ff, #00ff88);
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.futuristic-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: all 0.5s;
+}
+
+.futuristic-button:hover::before {
+    left: 100%;
+}
+
+.loading-effect {
+    background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
+    background-size: 200% 100%;
+    animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.glass-modal {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+    animation: textPulse 2s infinite;
+}
+
+@keyframes textPulse {
+    0% { text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(0, 242, 255, 0.8); }
+    100% { text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #039aa1, #57055a);
+    border-radius: 4px;
+}
+
+/* Efecto de hover para imágenes */
+.image-hover {
+    transition: all 0.5s ease;
+    filter: brightness(0.8);
+}
+
+.image-hover:hover {
+    filter: brightness(1.2);
+    transform: scale(1.02);
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full nav-blur z-50 px-4 md:px-8 py-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <button class="movie-button px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full text-sm font-medium transition-all hover:from-red-500 hover:to-red-600">
+                        Inicio
+                    </button>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <button class="nav-btn text-sm font-medium">Películas</button>
+                        <button class="nav-btn text-sm font-medium">Series</button>
+                        <button class="nav-btn text-sm font-medium">Deportes</button>
+                        <button class="nav-btn text-sm font-medium">Niños</button>
+                        <button class="nav-btn text-sm font-medium">Biblioteca</button>
+                    </div>
+                    
+                </div>
+                <div class="relative group">
+                    <div class="flex items-center bg-white/10 rounded-full overflow-hidden search-bar">
+                        <input type="search" 
+                               placeholder="Search movies..." 
+                               class="w-full px-4 py-2 bg-transparent text-white placeholder-white/50 focus:outline-none hidden group-hover:block"
+                               id="searchInput">
+                        <button class="p-2 hover:bg-white/10 transition-colors">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="absolute hidden group-hover:block right-0 mt-2 w-96 bg-[#1a1a1a] rounded-xl p-4 shadow-2xl">
+                        <div id="searchResults" class="search-results mt-4 space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <section class="relative min-h-screen">
+            <div id="heroSlider" class="relative w-full h-screen">
+            </div>
+        </section>
+        <section class="relative -mt-32 z-10 space-y-12 pb-20">
+            <div class="px-4 md:px-8">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-2xl font-semibold mb-6">Te puede gustar</h2>
+                    <div class="relative">
+                        <button class="carousel-arrow absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-4 rounded-full" onclick="slideMovies('upNext', 'left')">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="overflow-hidden">
+                            <div id="upNextContainer" class="flex transition-transform duration-500 ease-out space-x-4">
+                                <!-- Las peliculas se añaden dianmicamente -->
+                            </div>
+                        </div>
+                        <button class="carousel-arrow absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-4 rounded-full" onclick="slideMovies('upNext', 'right')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Section -->
+            <div class="px-4 md:px-8">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-2xl font-semibold mb-6">En tendencia</h2>
+                    <div class="relative">
+                        <button class="carousel-arrow absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-4 rounded-full" onclick="slideMovies('trending', 'left')">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="overflow-hidden">
+                            <div id="trendingContainer" class="flex transition-transform duration-500 ease-out space-x-4">
+                                <!-- Trending Las peliculas se añaden dianmicamente -->
+                            </div>
+                        </div>
+                        <button class="carousel-arrow absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-4 rounded-full" onclick="slideMovies('trending', 'right')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<script src="sala.js"></script>
+    <script>
+
+</script>
+</html>

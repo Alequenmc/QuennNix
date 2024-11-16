@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alitcha - Verificación Mejorada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'shake': 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
+                        'flip': 'flip 0.6s ease-in-out',
+                        'bounce-custom': 'bounce-custom 1s infinite',
+                        'slide-up': 'slide-up 0.5s ease-out',
+                        'slide-down': 'slide-down 0.5s ease-out'
+                    },
+                    keyframes: {
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'slide-down': {
+                            '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+        
+    </script>
+    <style>
+      /* Animación para hacer que la sección de memoria se deslice hacia arriba */
+      .memory-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.memory-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.memory-btn.active {
+    filter: brightness(1.5);
+}
+
+.memory-btn.clicked::after {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.memory-btn.active {
+    animation: pulse 0.5s ease-in-out;
+}
+
+
+
+
+
+
+    </style>
+</head>
+
+<body class="bg-[#030014] text-white min-h-screen flex flex-col overflow-x-hidden">
+    <div class="fixed inset-0 -z-10">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_200px,#000066,transparent)]"></div>
+        </div>
+    </div>
+    <div class="fixed inset-0 -z-5 overflow-hidden">
+        <div class="absolute top-[20%] left-[20%] w-72 h-72 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse transform hover:scale-110 transition-all duration-500"></div>
+        <div class="absolute top-[40%] right-[20%] w-72 h-72 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow transform hover:scale-110 transition-all duration-500"></div>
+        <div class="absolute bottom-[20%] left-1/2 w-72 h-72 bg-indigo-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse transform hover:scale-110 transition-all duration-500"></div>
+    </div>
+    <header class="sticky top-0 backdrop-blur-xl bg-black/10 border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent hover:from-purple-500 hover:to-blue-500 transition-all duration-500">
+                    Alichativid
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../menuprincipal.html" class="text-gray-300 hover:text-white transition-colors duration-300">Inicio</a>
+                    <a href="../servicios/servicios.html" class="text-gray-300 hover:text-white transition-colors duration-300">Servicios</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="p-2 rounded-full hover:bg-white/10 transition-all duration-300">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden animate-slide-down">
+                <div class="px-2 pt-2 pb-3 space-y-1 backdrop-blur-xl bg-black/30 rounded-lg mt-2">
+                    <a href="../menuprincipal.html" class="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Inicio</a>
+                    <a href="../servicios/servicios.html" class="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Servicios</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6">
+        <div class="max-w-md w-full backdrop-blur-xl bg-black/30 p-6 sm:p-8 rounded-2xl border border-white/10 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+            <div class="flex justify-center mb-8 relative">
+                <div class="flex items-center w-full max-w-xs">
+                    <div id="step1" class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="flex-grow h-1 bg-gray-700 mx-2" id="line1"></div>
+                    <div id="step2" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="flex-grow h-1 bg-gray-700 mx-2" id="line2"></div>
+                    <div id="step3" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="flex-grow h-1 bg-gray-700 mx-2" id="line3"></div>
+                    <div id="step4" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPTCHA Section -->
+            <div id="captcha-section" class="space-y-6 animate-slide-up">
+                <h2 class="text-xl sm:text-2xl font-bold text-center mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                    Verificación de Seguridad - Paso 1
+                </h2>
+                <div class="relative group">
+                    <canvas id="captcha-canvas" class="w-full h-20 rounded-lg border border-white/20 backdrop-blur-md bg-black/50 group-hover:bg-white/5 transition-all duration-300"></canvas>
+                    <button onclick="generateCaptcha()" class="absolute top-2 right-2 p-2 rounded-full hover:bg-white/10 transition-all duration-300">
+                        <i class="fas fa-redo-alt"></i>
+                    </button>
+                </div>
+                <input type="text" id="captcha-input" 
+                    class="w-full px-4 py-3 rounded-lg border border-white/20 bg-black/50 focus:bg-black/70 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-300 placeholder-gray-500"
+                    placeholder="Ingresa el código CAPTCHA" />
+                <div class="flex items-center justify-between gap-4">
+                    <div class="text-sm text-gray-400" id="attempts-left">Intentos restantes: 3</div>
+                    <button id="verify-captcha" 
+                        class="flex-grow py-3 px-6 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 font-semibold text-white shadow-lg hover:shadow-xl">
+                        Verificar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slider Puzzle Section -->
+            <div id="slider-section" class="hidden space-y-6 animate-slide-up">
+                <h2 class="text-xl sm:text-2xl font-bold text-center mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                    Verificación de Seguridad - Paso 2
+                </h2>
+                <p class="text-center text-gray-300 mb-4">Desliza el control hasta la posición correcta</p>
+                <div class="relative w-full h-12 bg-black/50 rounded-lg border border-white/20">
+                    <div id="slider-track" class="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg transition-all duration-300"></div>
+                    <div id="slider-handle" class="absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full cursor-pointer shadow-lg transform hover:scale-110 transition-all duration-300"></div>
+                    <div id="slider-target" class="absolute top-1/2 -translate-y-1/2 w-2 h-8 bg-green-500/50 rounded-full"></div>
+                </div>
+            </div>
+
+            
+            <div id="slider-container">
+                <div id="slider-track-filled"></div>
+                <div id="slider-target"></div>
+                <div id="slider-handle"></div>
+            </div>
+
+
+
+
+<!-- Memory Game Section -->
+<div id="memory-section" class="hidden space-y-6 animate-slide-up">
+    <h2 class="text-xl sm:text-2xl font-bold text-center mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+        Verificación de Seguridad - Paso 3
+    </h2>
+    <div class="flex flex-col items-center space-y-4">
+        <p class="text-center text-gray-300">Memoriza y repite la secuencia</p>
+        <div class="stats flex gap-4 text-sm">
+            <div class="stat bg-gray-800 p-2 rounded">
+                <span class="text-gray-400">Nivel:</span>
+                <span id="round-number" class="text-white ml-2">1</span>
+            </div>
+            <div class="stat bg-gray-800 p-2 rounded">
+                <span class="text-gray-400">Mejor puntuación:</span>
+                <span id="best-score" class="text-white ml-2">0</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-2 gap-4 aspect-square max-w-md mx-auto">
+        <button class="memory-btn bg-blue-500/50 rounded-lg transform hover:scale-105 transition-all duration-300" data-color="blue"></button>
+        <button class="memory-btn bg-red-500/50 rounded-lg transform hover:scale-105 transition-all duration-300" data-color="red"></button>
+        <button class="memory-btn bg-green-500/50 rounded-lg transform hover:scale-105 transition-all duration-300" data-color="green"></button>
+        <button class="memory-btn bg-yellow-500/50 rounded-lg transform hover:scale-105 transition-all duration-300" data-color="yellow"></button>
+    </div>
+    
+    <div class="text-center space-y-2">
+        <p id="status-text" class="text-gray-200"></p>
+        <p id="countdown" class="text-xl font-bold text-white"></p>
+    </div>
+    
+    <div class="flex justify-center gap-4">
+        <button id="start-game" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Iniciar Juego
+        </button>
+        <button id="toggle-sound" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+            🔊 Sonido
+        </button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Tic Tac Toe Section -->
+            <div id="tictactoe-section" class="hidden space-y-6 animate-slide-up">
+                <h2 class="text-xl sm:text-2xl font-bold text-center mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                    Verificación Final
+                </h2>
+                <p class="text-center text-gray-300 mb-4">Gana al bot en el Tic Tac Toe para continuar</p>
+                <div class="grid grid-cols-3 gap-2 aspect-square bg-black/50 p-2 rounded-lg border border-white/20">
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                    <div class="cell aspect-square bg-black/50 rounded cursor-pointer transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-3xl font-bold"></div>
+                </div>
+            </div>
+<!-- Success Section -->
+<div id="success-section" class="hidden space-y-6 animate-slide-up">
+    <div class="text-center">
+        <i class="fas fa-check-circle text-6xl text-green-500 animate-bounce-custom mb-4"></i>
+        <h2 class="text-xl sm:text-2xl font-bold text-center mb-4 bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
+            ¡Verificación Completada!
+        </h2>
+        <p class="text-gray-300 mb-6">Has completado todas las verificaciones de seguridad</p>
+        <a href="../menuprincipal.html" 
+            class="inline-block py-3 px-6 rounded-lg bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 font-semibold text-white shadow-lg hover:shadow-xl">
+            Continuar al sitio
+        </a>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div id="error-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center animate-slide-up">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-black/80 p-6 rounded-xl border border-red-500/50 shadow-xl max-w-sm w-full mx-4">
+        <h3 class="text-xl font-bold text-red-500 mb-4">Error de Verificación</h3>
+        <p id="error-message" class="text-gray-300 mb-6">Has agotado tus intentos. Por favor, espera 30 segundos antes de intentarlo nuevamente.</p>
+        <div class="flex justify-end">
+            <button onclick="closeErrorModal()" class="px-4 py-2 bg-red-500/20 text-red-500 rounded-lg hover:bg-red-500/30 transition-all duration-300">
+                Cerrar
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+</main>
+
+<script>
+// Advanced Security Verification System
+// Configuration and State Management
+const config = {
+    captcha: {
+        length: 6,
+        maxAttempts: 3,
+        cooldownTime: 30000, // 30 seconds
+    },
+    slider: {
+        tolerance: 5,
+        targetRange: [20, 80], // percentage of width
+    },
+    memory: {
+        initialSequenceLength: 3,
+        maxLevel: 10,
+        showTime: 1000,
+        pauseTime: 500,
+    },
+    tictactoe: {
+        winPatterns: [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6] // Diagonals
+        ]
+    }
+};
+
+class VerificationState {
+    constructor() {
+        this.currentStep = 1;
+        this.maxSteps = 4;
+        this.captchaAttempts = config.captcha.maxAttempts;
+        this.isLocked = false;
+        this.bestScore = parseInt(localStorage.getItem('bestScore')) || 0;
+    }
+
+    nextStep() {
+        if (this.currentStep < this.maxSteps) {
+            this.currentStep++;
+            this.updateUI();
+            return true;
+        }
+        return false;
+    }
+
+    updateUI() {
+        // Update progress indicators
+        for (let i = 1; i <= this.maxSteps; i++) {
+            const step = document.getElementById(`step${i}`);
+            const line = document.getElementById(`line${i}`);
+            
+            if (i < this.currentStep) {
+                step.classList.remove('bg-gray-700');
+                step.classList.add('bg-green-500');
+                if (line) {
+                    line.classList.remove('bg-gray-700');
+                    line.classList.add('bg-green-500');
+                }
+            } else if (i === this.currentStep) {
+                step.classList.remove('bg-gray-700');
+                step.classList.add('bg-blue-500');
+            }
+        }
+
+        // Show/hide sections
+        const sections = ['captcha', 'slider', 'memory', 'tictactoe', 'success'];
+        sections.forEach((section, index) => {
+            const element = document.getElementById(`${section}-section`);
+            if (element) {
+                element.classList.toggle('hidden', index + 1 !== this.currentStep);
+            }
+        });
+    }
+}
+
+// CAPTCHA Implementation
+class CaptchaSystem {
+    constructor(state) {
+        this.state = state;
+        this.canvas = document.getElementById('captcha-canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.captchaText = '';
+        this.setupEventListeners();
+        this.generateCaptcha();
+    }
+
+    generateCaptcha() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+        this.captchaText = Array(config.captcha.length).fill()
+            .map(() => chars.charAt(Math.floor(Math.random() * chars.length)))
+            .join('');
+        
+        this.drawCaptcha();
+    }
+
+    drawCaptcha() {
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        
+        // Clear canvas
+        this.ctx.clearRect(0, 0, width, height);
+        
+        // Draw background
+        this.ctx.fillStyle = '#1a1a1a';
+        this.ctx.fillRect(0, 0, width, height);
+        
+        // Add noise
+        for (let i = 0; i < 100; i++) {
+            this.ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.1})`;
+            this.ctx.fillRect(
+                Math.random() * width,
+                Math.random() * height,
+                Math.random() * 2,
+                Math.random() * 2
+            );
+        }
+
+        // Draw text
+        this.ctx.font = 'bold 24px Arial';
+        this.ctx.textBaseline = 'middle';
+        this.ctx.textAlign = 'center';
+        
+        // Draw each character with different styles
+        for (let i = 0; i < this.captchaText.length; i++) {
+            this.ctx.save();
+            this.ctx.translate(
+                width * (i + 1) / (this.captchaText.length + 1),
+                height / 2
+            );
+            this.ctx.rotate((Math.random() - 0.5) * 0.4);
+            this.ctx.fillStyle = `hsl(${Math.random() * 360}, 70%, 70%)`;
+            this.ctx.fillText(this.captchaText[i], 0, 0);
+            this.ctx.restore();
+        }
+
+        // Add lines
+        for (let i = 0; i < 5; i++) {
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = `rgba(255,255,255,${Math.random() * 0.5})`;
+            this.ctx.lineWidth = Math.random() * 2;
+            this.ctx.moveTo(Math.random() * width, Math.random() * height);
+            this.ctx.lineTo(Math.random() * width, Math.random() * height);
+            this.ctx.stroke();
+        }
+    }
+
+    setupEventListeners() {
+        const verifyButton = document.getElementById('verify-captcha');
+        const input = document.getElementById('captcha-input');
+
+        verifyButton.addEventListener('click', () => this.verifyCaptcha());
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.verifyCaptcha();
+        });
+    }
+
+    verifyCaptcha() {
+        const input = document.getElementById('captcha-input');
+        const attemptsElement = document.getElementById('attempts-left');
+
+        if (this.state.isLocked) {
+            this.showError('Por favor espera antes de intentar nuevamente');
+            return;
+        }
+
+        if (input.value.toLowerCase() === this.captchaText.toLowerCase()) {
+            this.state.nextStep();
+            initializeSlider();
+        } else {
+            this.state.captchaAttempts--;
+            attemptsElement.textContent = `Intentos restantes: ${this.state.captchaAttempts}`;
+            
+            if (this.state.captchaAttempts <= 0) {
+                this.lockSystem();
+            }
+            
+            this.generateCaptcha();
+            input.value = '';
+            this.showError('Código incorrecto');
+        }
+    }
+
+    lockSystem() {
+        this.state.isLocked = true;
+        this.showError('Has agotado tus intentos. Por favor espera 30 segundos.');
+        
+        setTimeout(() => {
+            this.state.isLocked = false;
+            this.state.captchaAttempts = config.captcha.maxAttempts;
+            document.getElementById('attempts-left').textContent = 
+                `Intentos restantes: ${this.state.captchaAttempts}`;
+            this.generateCaptcha();
+        }, config.captcha.cooldownTime);
+    }
+
+    showError(message) {
+        const modal = document.getElementById('error-modal');
+        const messageElement = document.getElementById('error-message');
+        messageElement.textContent = message;
+        modal.classList.remove('hidden');
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Slider Implementation
+class SliderVerification {
+    constructor(state) {
+        this.state = state;
+        this.isDragging = false;
+        this.startX = 0;
+        this.sliderLeft = 0;
+        this.targetPosition = 0;
+        
+        this.handle = document.getElementById('slider-handle');
+        this.track = document.getElementById('slider-track');
+        this.target = document.getElementById('slider-target');
+        
+        this.setupSlider();
+    }
+
+    setupSlider() {
+        // Set random target position
+        const min = config.slider.targetRange[0];
+        const max = config.slider.targetRange[1];
+        this.targetPosition = min + Math.random() * (max - min);
+        this.target.style.left = `${this.targetPosition}%`;
+
+        // Event listeners
+        this.handle.addEventListener('mousedown', (e) => this.startDragging(e));
+        document.addEventListener('mousemove', (e) => this.drag(e));
+        document.addEventListener('mouseup', () => this.stopDragging());
+        
+        // Touch events
+        this.handle.addEventListener('touchstart', (e) => this.startDragging(e));
+        document.addEventListener('touchmove', (e) => this.drag(e));
+        document.addEventListener('touchend', () => this.stopDragging());
+    }
+
+    startDragging(e) {
+        this.isDragging = true;
+        this.startX = e.type === 'mousedown' ? e.pageX : e.touches[0].pageX;
+        this.sliderLeft = this.handle.offsetLeft;
+    }
+
+    drag(e) {
+        if (!this.isDragging) return;
+        e.preventDefault();
+        
+        const x = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
+        const walk = x - this.startX;
+        let newPosition = this.sliderLeft + walk;
+        
+        // Constrain to slider bounds
+        const sliderWidth = this.track.offsetWidth - this.handle.offsetWidth;
+        newPosition = Math.max(0, Math.min(newPosition, sliderWidth));
+        
+        // Update position
+        const percentage = (newPosition / sliderWidth) * 100;
+        this.handle.style.left = `${percentage}%`;
+        this.track.style.width = `${percentage}%`;
+        
+        // Check if handle is close enough to target
+        if (Math.abs(percentage - this.targetPosition) < config.slider.tolerance) {
+            this.handle.style.backgroundColor = '#22c55e';
+        } else {
+            this.handle.style.backgroundColor = 'white';
+        }
+    }
+
+    stopDragging() {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        
+        const percentage = (this.handle.offsetLeft / (this.track.offsetWidth - this.handle.offsetWidth)) * 100;
+        
+        if (Math.abs(percentage - this.targetPosition) < config.slider.tolerance) {
+            this.success();
+        } else {
+            this.reset();
+        }
+    }
+
+    reset() {
+        this.handle.style.left = '0%';
+        this.track.style.width = '0%';
+        this.handle.style.backgroundColor = 'white';
+        
+        // Generate new target position
+        const min = config.slider.targetRange[0];
+        const max = config.slider.targetRange[1];
+        this.targetPosition = min + Math.random() * (max - min);
+        this.target.style.left = `${this.targetPosition}%`;
+    }
+
+    success() {
+        setTimeout(() => {
+            this.state.nextStep();
+            initializeMemoryGame();
+        }, 500);
+    }
+}
+
+// Memory Game Implementation
+class MemoryGame {
+    constructor(state) {
+        this.state = state;
+        this.sequence = [];
+        this.playerSequence = [];
+        this.round = 1;
+        this.isPlaying = false;
+        this.soundEnabled = true;
+        
+        this.buttons = Array.from(document.querySelectorAll('.memory-btn'));
+        this.setupAudio();
+        this.setupEventListeners();
+    }
+
+    setupAudio() {
+        this.sounds = {
+            blue: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+            red: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+            green: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='),
+            yellow: new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA==')
+        };
+
+        // Set different frequencies for each color
+        Object.keys(this.sounds).forEach((color, index) => {
+            const oscillator = new OscillatorNode(new AudioContext());
+            oscillator.frequency.value = 220 + (index * 110); // Different frequency for each color
+            oscillator.connect(new AudioContext().destination);
+        });
+    }
+
+    setupEventListeners() {
+        document.getElementById('start-game').addEventListener('click', () => this.startGame());
+        document.getElementById('toggle-sound').addEventListener('click', () => this.toggleSound());
+        
+        this.buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (this.isPlaying) {
+                    const color = btn.dataset.color;
+                    this.handlePlayerInput(color);
+                }
+            });
+        });
+    }
+
+    startGame() {
+        this.sequence = [];
+        this.round = 1;
+        this.updateRound();
+        this.addToSequence();
+        this.playSequence();
+    }
+
+    addToSequence() {
+        const colors = ['blue', 'red', 'green', 'yellow'];
+        this.sequence.push(colors[Math.floor(Math.random() * colors.length)]);
+    }
+
+    async playSequence() {
+        this.isPlaying = false;
+        this.playerSequence = [];
+        
+        for (let i = 3; i > 0; i--) {
+            document.getElementById('countdown').textContent = i;
+            await this.wait(1000);
+        }
+        document.getElementById('countdown').textContent = '¡Memoriza!';
+
+        for (const color of this.sequence) {
+            await this.activateButton(color);
+            await this.wait(config.memory.pauseTime);
+        }
+
+        document.getElementById('countdown').textContent = '¡Tu turno!';
+        this.isPlaying = true;
+    }
+
+    async activateButton(color) {
+        const button = this.buttons.find(btn => btn.dataset.color === color);
+        button.classList.add('active');
+        if (this.soundEnabled) this.playSound(color);
+        await this.wait(config.memory.showTime);
+        button.classList.remove('active');
+    }
+
+    handlePlayerInput(color) {
+        const button = this.buttons.find(btn => btn.dataset.color === color);
+        button.classList.add('clicked');
+        if (this.soundEnabled) this.playSound(color);
+        
+        setTimeout(() => button.classList.remove('clicked'), 200);
+        
+        this.playerSequence.push(color);
+        
+        if (this.playerSequence[this.playerSequence.length - 1] !== this.sequence[this.playerSequence.length - 1]) {
+            this.gameOver();
+            return;
+        }
+        
+        if (this.playerSequence.length === this.sequence.length) {
+            this.isPlaying = false;
+            if (this.round >= config.memory.maxLevel) {
+                this.victory();
+            } else {
+                setTimeout(() => {
+                    this.round++;
+                    this.updateRound();
+                    this.addToSequence();
+                    this.playSequence();
+                }, 1000);
+            }
+        }
+    }
+
+    gameOver() {
+        this.isPlaying = false;
+        document.getElementById('countdown').textContent = '¡Incorrecto! Inténtalo de nuevo';
+        this.playErrorSound();
+        setTimeout(() => this.startGame(), 2000);
+    }
+
+    victory() {
+        if (this.round > this.state.bestScore) {
+            this.state.bestScore = this.round;
+            localStorage.setItem('bestScore', this.state.bestScore);
+            document.getElementById('best-score').textContent = this.state.bestScore;
+        }
+        
+        setTimeout(() => {
+            this.state.nextStep();
+            initializeTicTacToe();
+        }, 1000);
+    }
+
+    updateRound() {
+        document.getElementById('round-number').textContent = this.round;
+    }
+
+    toggleSound() {
+        this.soundEnabled = !this.soundEnabled;
+        const button = document.getElementById('toggle-sound');
+        button.textContent = this.soundEnabled ? '🔊 Sonido' : '🔇 Sonido';
+    }
+
+    playSound(color) {
+        const sound = this.sounds[color].cloneNode();
+        sound.play();
+    }
+
+    playErrorSound() {
+        const context = new AudioContext();
+        const oscillator = context.createOscillator();
+        const gainNode = context.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(context.destination);
+        
+        oscillator.frequency.setValueAtTime(150, context.currentTime);
+        gainNode.gain.setValueAtTime(0.5, context.currentTime);
+        
+        oscillator.start();
+        oscillator.stop(context.currentTime + 0.5);
+    }
+
+    wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+}
+
+// Tic Tac Toe Implementation
+class TicTacToe {
+    constructor(state) {
+        this.state = state;
+        this.board = Array(9).fill('');
+        this.currentPlayer = 'X';
+        this.gameActive = true;
+        this.cells = document.querySelectorAll('.cell');
+        this.setupBoard();
+    }
+
+    setupBoard() {
+        this.cells.forEach((cell, index) => {
+            cell.addEventListener('click', () => this.handleCellClick(index));
+            cell.classList.add('hover:bg-white/10');
+        });
+    }
+
+    handleCellClick(index) {
+        if (this.board[index] || !this.gameActive || this.currentPlayer !== 'X') return;
+        
+        this.makeMove(index);
+        
+        if (this.gameActive) {
+            setTimeout(() => this.makeAIMove(), 500);
+        }
+    }
+
+    makeMove(index) {
+        this.board[index] = this.currentPlayer;
+        this.cells[index].textContent = this.currentPlayer;
+        this.cells[index].classList.add(
+            this.currentPlayer === 'X' ? 'text-blue-500' : 'text-red-500'
+        );
+
+        if (this.checkWin()) {
+            this.handleGameEnd(false);
+            return;
+        }
+
+        if (this.checkDraw()) {
+            this.handleGameEnd(true);
+            return;
+        }
+
+        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+    }
+
+    makeAIMove() {
+        const bestMove = this.minimax(this.board, 'O').index;
+        this.makeMove(bestMove);
+    }
+
+    minimax(board, player) {
+        const availableSpots = this.getEmptyCells(board);
+
+        if (this.checkWinningCondition(board, 'X')) {
+            return { score: -10 };
+        } else if (this.checkWinningCondition(board, 'O')) {
+            return { score: 10 };
+        } else if (availableSpots.length === 0) {
+            return { score: 0 };
+        }
+
+        const moves = [];
+
+        for (const spot of availableSpots) {
+            const move = {};
+            move.index = spot;
+            board[spot] = player;
+
+            if (player === 'O') {
+                move.score = this.minimax(board, 'X').score;
+            } else {
+                move.score = this.minimax(board, 'O').score;
+            }
+
+            board[spot] = '';
+            moves.push(move);
+        }
+
+        let bestMove;
+        if (player === 'O') {
+            let bestScore = -Infinity;
+            for (const move of moves) {
+                if (move.score > bestScore) {
+                    bestScore = move.score;
+                    bestMove = move;
+                }
+            }
+        } else {
+            let bestScore = Infinity;
+            for (const move of moves) {
+                if (move.score < bestScore) {
+                    bestScore = move.score;
+                    bestMove = move;
+                }
+            }
+        }
+
+        return bestMove;
+    }
+
+    getEmptyCells(board) {
+        return board.reduce((acc, cell, index) => {
+            if (!cell) acc.push(index);
+            return acc;
+        }, []);
+    }
+
+    checkWin() {
+        return config.tictactoe.winPatterns.some(pattern => {
+            const line = pattern.map(index => this.board[index]);
+            return line.every(cell => cell === this.currentPlayer);
+        });
+    }
+
+    checkWinningCondition(board, player) {
+        return config.tictactoe.winPatterns.some(pattern => {
+            return pattern.every(index => board[index] === player);
+        });
+    }
+
+    checkDraw() {
+        return !this.board.includes('');
+    }
+
+    handleGameEnd(isDraw) {
+        this.gameActive = false;
+        
+        if (isDraw) {
+            this.resetGame();
+            return;
+        }
+
+        if (this.currentPlayer === 'X') {
+            // Player won
+            setTimeout(() => {
+                this.state.nextStep();
+                document.getElementById('success-section').classList.remove('hidden');
+            }, 1000);
+        } else {
+            // AI won
+            setTimeout(() => this.resetGame(), 1000);
+        }
+    }
+
+    resetGame() {
+        this.board = Array(9).fill('');
+        this.cells.forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('text-blue-500', 'text-red-500');
+        });
+        this.currentPlayer = 'X';
+        this.gameActive = true;
+    }
+}
+
+// Utility Functions
+function closeErrorModal() {
+    document.getElementById('error-modal').classList.add('hidden');
+}
+
+// Mobile Menu Toggle
+document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// Initialize Verification System
+let verificationState;
+let captchaSystem;
+let sliderVerification;
+let memoryGame;
+let ticTacToe;
+
+function initializeVerification() {
+    verificationState = new VerificationState();
+    captchaSystem = new CaptchaSystem(verificationState);
+}
+
+function initializeSlider() {
+    sliderVerification = new SliderVerification(verificationState);
+}
+
+function initializeMemoryGame() {
+    memoryGame = new MemoryGame(verificationState);
+}
+
+function initializeTicTacToe() {
+    ticTacToe = new TicTacToe(verificationState);
+}
+
+// Start the verification process
+document.addEventListener('DOMContentLoaded', () => {
+    initializeVerification();
+});
+
+// Add some nice animations using GSAP
+gsap.from('.memory-btn', {
+    duration: 0.5,
+    scale: 0,
+    opacity: 0,
+    stagger: 0.1,
+    ease: 'back.out(1.7)',
+    delay: 0.5
+});
+
+// Add responsive animations
+const animateOnScroll = () => {
+    gsap.utils.toArray('.animate-on-scroll').forEach(element => {
+        gsap.from(element, {
+            scrollTrigger: {
+                trigger: element,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out'
+        });
+    });
+};
+
+// Initialize animations
+window.addEventListener('load', () => {
+    animateOnScroll();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
