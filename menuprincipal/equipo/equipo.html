@@ -33,10 +33,6 @@
             animation: scan-line 2s linear infinite;
         }
 
-        @keyframes scan-line {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(1000%); }
-        }
 
         .team-card {
             background: rgba(16, 16, 28, 0.8);
@@ -47,19 +43,7 @@
             position: relative;
         }
 
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            z-index: -1;
-            border-radius: 16px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        
 
         .team-card:hover::before {
             opacity: 1;
@@ -80,17 +64,8 @@
             box-shadow: 0 0 15px var(--neon-blue);
         }
 
-        .glitch-effect {
-            animation: glitch 1s linear infinite;
-            opacity: 0.8;
-        }
-
-        @keyframes glitch {
-            2%, 64% { transform: translate(2px,0) skew(0deg); }
-            4%, 60% { transform: translate(-2px,0) skew(0deg); }
-            62% { transform: translate(0,0) skew(5deg); }
-        }
-
+       
+       
         .image-hover {
             position: relative;
             overflow: hidden;
@@ -117,11 +92,12 @@
     <section id="equipo" class="py-20 cyber-container min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold mb-4 glitch-effect" style="color: var(--neon-blue)">
+                <h2 class="text-5xl font-bold mb-4" style="color: var(--neon-blue)">
                     Equipo QuinnNix
                 </h2>
                
-            </div><!--
+            </div>
+            <!--
                 Página web creada y desarrollada por QuinnNix. Todos los derechos reservados.
                 El uso, distribución o modificación no autorizada de este código está prohibido.
               -->
