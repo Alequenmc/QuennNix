@@ -73,7 +73,6 @@
     </style>
 </head>
 <body class="cyber-bg min-h-screen text-gray-200 antialiased matrix-bg">
-    <!-- Cyber Grid Background -->
     <div class="overflow-y-auto max-h-screen">
         <div class="fixed inset-0 z-0">
             <svg width="100%" height="100%" xmlns="img">
@@ -107,7 +106,7 @@
                         <p class="text-sm text-gray-400 mt-2">Bienvenido a QuennVix</p>
                     </div>
 
-                    <!-- los tabs-->
+                    <!-- aca estan los tabs-->
                     <div class="flex mb-6 border-b border-[#b829ff]/20">
                         <button onclick="switchTab('login')" class="tab-btn px-6 py-3 text-sm focus:outline-none border-b-2 border-[#29b6ff] transition-all">Login</button>
                         <button onclick="switchTab('register')" class="tab-btn px-6 py-3 text-sm focus:outline-none border-b-2 border-transparent transition-all">Register</button>
@@ -178,18 +177,19 @@
                         <p class="text-sm text-[#b829ff]">Estado: <span class="text-[#00fff2]">Online</span></p>
                     </div>
                     <div class="text-[#b829ff] text-sm leading-relaxed mb-4">
-                        Actualmente, estamos trabajando en la funcionalidad de registro. Por ahora, no será posible registrar nuevos datos. 
+                        Actualmente, estamos realizando una transición de tecnologías, pasando de HTML a PHP, React y otras herramientas avanzadas para mejorar la funcionalidad y la experiencia de usuario.
                         <span class="text-[#00fff2] font-medium">
-                            No se guardará ninguna información ingresada.
+                            Estas actualizaciones incluirán nuevas características que optimizarán el rendimiento y la interacción en el futuro.
                         </span>
-                        ¡Agradecemos tu paciencia mientras preparamos todo para ti! 💻✨
+                        ¡Gracias por tu paciencia mientras preparamos todo para ti! 💻✨
                     </div>
                     <button 
                         class="w-full bg-gradient-to-r from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border border-[#b829ff]/20 text-[#00fff2] rounded-lg py-3 hover:from-[#b829ff]/20 hover:via-[#29b6ff]/20 hover:to-[#00fff2]/20 transition-all duration-300 neon-border"
                         onclick="showAlert()">
-                        Leer mas
+                        Leer más
                     </button>
                 </div>
+                
                 
                 <!-- Alerta, aca se añadira dinamicamente mas alertas y mas cosas oero en el futuro-->
                 <div id="alertModal" class="hidden fixed inset-0 bg-[#030014]/90 backdrop-blur-md flex items-center justify-center z-50">
@@ -218,7 +218,6 @@
 </body>
 
 <script src="login.js"></script>
- <!-- Script -->
  <script>
     function showAlert() {
         document.getElementById('alertModal').classList.remove('hidden');
