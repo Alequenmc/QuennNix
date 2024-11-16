@@ -49,6 +49,15 @@
             box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
             transition: all 0.3s ease;
         }
+        .arrow-down {
+    width: 30px;
+    height: 30px;
+    border-left: 5px solid white;
+    border-bottom: 5px solid white;
+    transform: rotate(45deg);
+    margin: 0 auto;
+    margin-top: 10px;
+}
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -69,9 +78,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#servicios" class="text-gray-300 hover:text-purple-400 transition-colors">Servicios</a>
                     <a href="#socios" class="text-gray-300 hover:text-purple-400 transition-colors">Socios</a>
-                    <button class="px-6 py-2 rounded-full neon-border bg-gray-800/50 text-purple-400 hover:bg-purple-500/20 transition-all">
-                        Iniciar Sesión
-                    </button>
+                    
                 </div>
             </div>
         </div>
@@ -79,16 +86,21 @@
     <div class="min-h-screen flex items-center relative overflow-hidden">
        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-6xl sm:text-7xl font-bold neon-text bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 mb-8">
-                    QueenNix
-                </h1>
-                <p class="text-xl text-gray-300 mb-12">
-                  Apps, IAs, peliculas y mucho mas 
-                </p>
-              
-            </div>
+    <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-6xl sm:text-7xl font-bold neon-text bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 mb-8">
+            QueenNix
+        </h1>
+        <p class="text-xl text-gray-300 mb-12">
+            Apps, IAs, peliculas y mucho más
+        </p>
+       <!-- Flecha hacia abajo -->
+        <div class="mt-8">
+            <a href="#next-section" class="text-white text-4xl">
+                <i class="fas fa-chevron-down"></i> 
+            </a>
         </div>
+    </div>
+
     </div>
     <section id="servicios" class="py-20 relative min-h-screen">
         <div class="absolute inset-0 bg-transparent"></div>
@@ -120,7 +132,7 @@
         
                         <div class="relative group/btn inline-flex w-full justify-center mt-4">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full blur opacity-40 group-hover/btn:opacity-75 transition duration-500"></div>
-                            <!-- Botón no clickeable con texto 'No disponible' -->
+                
                             <div class="relative w-full px-6 py-3 bg-slate-900 text-white rounded-full shadow-lg group-hover/btn:bg-slate-800 transition-all duration-200 text-center cursor-not-allowed opacity-50">
                                 <span class="relative z-10 font-medium">No disponible</span>
                             </div>
@@ -156,6 +168,12 @@
                         
                     </div>
                 </div>
+
+
+                <div id="next-section">
+  
+</div>
+
                 <div class="group relative">
                     <div class="absolute -inset-0.5  rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
     
